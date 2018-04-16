@@ -1,0 +1,367 @@
+2018-04-13 18:21:45 DEBUG Membership:74 - New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+2018-04-13 18:55:38 DEBUG Membership:77 - New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+2018-04-13 19:00:28 DEBUG Membership:77 - New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+2018-04-13 19:01:20 DEBUG Membership:77 - New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+2018-04-13 19:01:20 DEBUG Membership:123 - Member List: 
+2018-04-13 19:01:20 DEBUG Membership:125 - [ localhost:8081, Type: EVENT, Primary: true, PID:  1
+
+2018-04-13 19:01:20 DEBUG Membership:125 - [ localhost:8082, Type: EVENT, Primary: false, PID:  2
+
+2018-04-13 19:01:20 DEBUG Membership:125 - [ localhost:8083, Type: EVENT, Primary: false, PID:  3
+
+2018-04-13 19:01:20 DEBUG Membership:125 - [ localhost:8080, Type: FRONT_END, Primary: false, PID:  0
+
+2018-04-13 19:01:20 DEBUG Membership:125 - [ localhost:8080, Type: FRONT_END, Primary: false, PID:  0
+
+2018-04-13 19:06:26 DEBUG Membership:77 - New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+2018-04-13 19:06:26 DEBUG Membership:123 - Member List: 
+2018-04-13 19:06:26 DEBUG Membership:128 - [ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-13 19:09:37 DEBUG Membership:77 - New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+2018-04-13 19:09:37 DEBUG Membership:128 - Members List:[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-13 19:10:40 DEBUG Membership:77 - New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+2018-04-13 19:10:40 DEBUG Membership:129 - 
+Members List:[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-13 19:11:36 DEBUG Membership:77 - New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+2018-04-13 19:11:36 DEBUG Membership:129 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-13 19:55:27 DEBUG Membership:78 - New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+2018-04-13 19:55:27 DEBUG Membership:153 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-13 20:01:06 DEBUG Membership:79 - New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+2018-04-13 20:01:06 DEBUG Membership:164 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-13 20:06:02 DEBUG Membership:79 - New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+2018-04-13 20:06:02 DEBUG Membership:164 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-13 23:44:24 DEBUG Membership:83 - New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+2018-04-13 23:44:24 DEBUG Membership:273 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  3]
+
+2018-04-13 23:53:37 DEBUG Membership:83 - New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+2018-04-13 23:53:37 DEBUG Membership:273 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  3]
+
+2018-04-13 23:57:19 DEBUG Membership:83 - New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+2018-04-13 23:57:19 DEBUG Membership:89 - Process ID before: 3
+2018-04-13 23:57:19 DEBUG Membership:92 - Process ID generated: 3
+2018-04-13 23:57:19 DEBUG Membership:275 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  3]
+
+2018-04-13 23:58:49 DEBUG Membership:83 - New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+2018-04-13 23:58:49 DEBUG Membership:89 - Process ID before: 3
+2018-04-13 23:58:49 DEBUG Membership:92 - Process ID generated: 4
+2018-04-13 23:58:49 DEBUG Membership:275 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-13 23:59:40 DEBUG Membership:83 - New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+2018-04-13 23:59:40 DEBUG Membership:89 - Process ID before: 3
+2018-04-13 23:59:40 DEBUG Membership:92 - Process ID generated: 4
+2018-04-13 23:59:40 DEBUG Membership:275 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 09:39:04 DEBUG Membership:81 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 09:39:04 DEBUG Membership:87 - Process ID before: 3
+2018-04-15 09:39:04 DEBUG Membership:90 - Process ID generated: 4
+2018-04-15 09:39:04 DEBUG Membership:302 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 09:46:42 DEBUG Membership:81 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 09:46:42 DEBUG Membership:87 - Process ID before: 3
+2018-04-15 09:46:42 DEBUG Membership:90 - Process ID generated: 4
+2018-04-15 09:46:42 DEBUG Membership:303 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 09:46:42 DEBUG Membership:106 - Process of notifying other servers has started ...
+2018-04-15 09:54:49 DEBUG Membership:81 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 09:54:49 DEBUG Membership:87 - Process ID before: 3
+2018-04-15 09:54:49 DEBUG Membership:90 - Process ID generated: 4
+2018-04-15 09:54:49 DEBUG Membership:303 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 09:54:49 DEBUG Membership:106 - Process of notifying other servers has started ...
+2018-04-15 09:58:53 DEBUG Membership:81 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 09:58:53 DEBUG Membership:87 - Process ID before: 3
+2018-04-15 09:58:53 DEBUG Membership:90 - Process ID generated: 4
+2018-04-15 09:58:53 DEBUG Membership:305 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 09:58:53 DEBUG Membership:106 - Process of notifying other servers has started ...
+2018-04-15 10:03:38 DEBUG Membership:81 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 10:03:38 DEBUG Membership:87 - Process ID before: 3
+2018-04-15 10:03:38 DEBUG Membership:90 - Process ID generated: 4
+2018-04-15 10:03:38 DEBUG Membership:306 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 10:03:38 DEBUG Membership:106 - Process of notifying other servers has started ...
+2018-04-15 10:08:09 DEBUG Membership:81 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 10:08:09 DEBUG Membership:87 - Process ID before: 3
+2018-04-15 10:08:09 DEBUG Membership:90 - Process ID generated: 4
+2018-04-15 10:08:09 DEBUG Membership:303 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 10:08:09 DEBUG Membership:106 - Process of notifying other servers has started ...
+2018-04-15 10:08:09 DEBUG NotificationWorker:26 - Notifying to http://localhost:8082/members/add
+2018-04-15 10:08:09 DEBUG NotificationWorker:26 - Notifying to http://localhost:8083/members/add
+2018-04-15 10:08:09 DEBUG NotificationWorker:26 - Notifying to http://localhost:8083/members/add
+2018-04-15 10:08:09 DEBUG NotificationWorker:38 - Notification of new server was successful:  http://localhost:8082/members/add
+2018-04-15 10:15:31 DEBUG Membership:81 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 10:15:31 DEBUG Membership:87 - Process ID before: 3
+2018-04-15 10:15:31 DEBUG Membership:90 - Process ID generated: 4
+2018-04-15 10:15:31 DEBUG Membership:304 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 10:15:31 DEBUG Membership:106 - Process of notifying other servers has started ...
+2018-04-15 10:15:31 DEBUG NotificationWorker:26 - Notifying to http://localhost:8082/members/add
+2018-04-15 10:15:31 DEBUG NotificationWorker:26 - Notifying to http://localhost:8083/members/add
+2018-04-15 10:15:31 DEBUG NotificationWorker:26 - Notifying to http://localhost:8083/members/add
+2018-04-15 10:15:32 DEBUG NotificationWorker:38 - Notification of new server was successful:  http://localhost:8082/members/add
+2018-04-15 10:22:06 DEBUG Membership:81 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 10:22:06 DEBUG Membership:87 - Process ID before: 3
+2018-04-15 10:22:06 DEBUG Membership:90 - Process ID generated: 4
+2018-04-15 10:22:06 DEBUG Membership:299 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 10:22:06 DEBUG Membership:106 - Process of notifying other servers has started ...
+2018-04-15 10:22:06 DEBUG NotificationWorker:26 - Notifying to http://localhost:8082/members/add
+2018-04-15 10:22:06 DEBUG NotificationWorker:26 - Notifying to http://localhost:8083/members/add
+2018-04-15 10:22:07 DEBUG NotificationWorker:38 - Notification of new server was successful:  http://localhost:8082/members/add
+2018-04-15 10:26:26 DEBUG Membership:81 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 10:26:26 DEBUG Membership:87 - Process ID before: 3
+2018-04-15 10:26:26 DEBUG Membership:90 - Process ID generated: 4
+2018-04-15 10:26:26 DEBUG Membership:107 - Process of notifying other servers has started ...
+2018-04-15 10:26:26 DEBUG NotificationWorker:26 - Notifying to http://localhost:8082/members/add
+2018-04-15 10:26:26 DEBUG NotificationWorker:26 - Notifying to http://localhost:8083/members/add
+2018-04-15 10:26:26 DEBUG Membership:300 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 10:26:26 DEBUG NotificationWorker:38 - Notification of new server was successful:  http://localhost:8082/members/add
+2018-04-15 12:02:14 DEBUG NotificationWorker:22 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 12:02:14 DEBUG NotificationWorker:22 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 12:02:14 DEBUG NotificationWorker:22 - Sending HeartBeat http://localhost:8083/heartbeat
+2018-04-15 12:02:14 DEBUG NotificationWorker:41 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 12:02:15 DEBUG NotificationWorker:37 - Server not alive. Status unknown: http://localhost:8082/heartbeat
+2018-04-15 12:02:15 DEBUG NotificationWorker:37 - Server not alive. Status unknown: http://localhost:8083/heartbeat
+2018-04-15 12:11:59 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8083/heartbeat
+2018-04-15 12:11:59 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 12:11:59 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 12:11:59 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 12:11:59 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8082/heartbeat
+2018-04-15 12:11:59 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8083/heartbeat
+2018-04-15 12:12:04 DEBUG Membership:80 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 12:12:04 DEBUG Membership:86 - Process ID before: 3
+2018-04-15 12:12:04 DEBUG Membership:89 - Process ID generated: 4
+2018-04-15 12:12:04 DEBUG Membership:106 - Process of notifying other servers has started ...
+2018-04-15 12:12:04 DEBUG NotificationWorker:26 - Notifying to http://localhost:8082/members/add
+2018-04-15 12:12:04 DEBUG NotificationWorker:26 - Notifying to http://localhost:8083/members/add
+2018-04-15 12:12:04 DEBUG Membership:299 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 12:12:04 DEBUG NotificationWorker:38 - Notification of new server was successful:  http://localhost:8082/members/add
+2018-04-15 12:16:20 DEBUG Membership:80 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 12:16:20 DEBUG Membership:86 - Process ID before: 3
+2018-04-15 12:16:20 DEBUG Membership:89 - Process ID generated: 4
+2018-04-15 12:16:20 DEBUG Membership:106 - Process of notifying other servers has started ...
+2018-04-15 12:16:20 DEBUG NotificationWorker:26 - Notifying to http://localhost:8082/members/add
+2018-04-15 12:16:20 DEBUG NotificationWorker:26 - Notifying to http://localhost:8083/members/add
+2018-04-15 12:16:20 DEBUG Membership:299 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 12:16:20 DEBUG NotificationWorker:38 - Notification of new server was successful:  http://localhost:8082/members/add
+2018-04-15 12:23:26 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 12:23:26 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 12:23:26 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8083/heartbeat
+2018-04-15 12:23:27 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 12:23:27 DEBUG NotificationWorker:32 - Server not alive. Status unknown: http://localhost:8082/heartbeat
+2018-04-15 12:23:27 DEBUG NotificationWorker:32 - Server not alive. Status unknown: http://localhost:8083/heartbeat
+2018-04-15 12:28:49 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8083/heartbeat
+2018-04-15 12:28:49 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 12:28:49 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 12:28:49 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 12:28:49 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8083/heartbeat
+2018-04-15 12:28:49 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8082/heartbeat
+2018-04-15 12:28:54 DEBUG Membership:80 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 12:28:54 DEBUG Membership:86 - Process ID before: 3
+2018-04-15 12:28:54 DEBUG Membership:89 - Process ID generated: 4
+2018-04-15 12:28:54 DEBUG Membership:106 - Process of notifying other servers has started ...
+2018-04-15 12:28:54 DEBUG NotificationWorker:26 - Notifying to http://localhost:8082/members/add
+2018-04-15 12:28:54 DEBUG NotificationWorker:26 - Notifying to http://localhost:8083/members/add
+2018-04-15 12:28:54 DEBUG Membership:299 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 12:28:55 DEBUG NotificationWorker:38 - Notification of new server was successful:  http://localhost:8082/members/add
+2018-04-15 12:43:51 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 12:43:51 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 12:43:51 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8083/heartbeat
+2018-04-15 12:43:51 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 12:43:51 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat
+2018-04-15 12:43:52 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8083/heartbeat
+2018-04-15 12:50:24 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 12:50:24 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 12:50:24 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8083/heartbeat
+2018-04-15 12:50:24 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 12:50:24 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8083/heartbeat
+2018-04-15 12:50:24 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat
+2018-04-15 13:17:25 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8083/heartbeat
+2018-04-15 13:17:25 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 13:17:25 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 13:17:25 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8083/heartbeat
+2018-04-15 13:17:25 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 13:17:25 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat
+2018-04-15 13:17:30 DEBUG Membership:79 - New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+2018-04-15 13:17:30 DEBUG Membership:85 - Process ID before: 3
+2018-04-15 13:17:30 DEBUG Membership:88 - Process ID generated: 4
+2018-04-15 13:17:30 DEBUG Membership:105 - Process of notifying other servers has started ...
+2018-04-15 13:17:30 DEBUG NotificationWorker:26 - Notifying to http://localhost:8082/members/add
+2018-04-15 13:17:30 DEBUG Membership:304 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  4]
+
+2018-04-15 13:17:30 DEBUG NotificationWorker:26 - Notifying to http://localhost:8083/members/add
+2018-04-15 13:17:30 DEBUG NotificationWorker:38 - Notification of new server was successful:  http://localhost:8082/members/add
+2018-04-15 13:19:25 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 13:19:25 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 13:19:25 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8083/heartbeat
+2018-04-15 13:19:25 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 13:19:25 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat
+2018-04-15 13:19:25 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8083/heartbeat
+2018-04-15 13:21:25 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 13:21:25 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 13:21:25 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8083/heartbeat
+2018-04-15 13:21:25 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 13:21:25 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8083/heartbeat
+2018-04-15 13:21:25 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat

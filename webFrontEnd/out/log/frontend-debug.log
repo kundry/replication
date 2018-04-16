@@ -1,0 +1,55 @@
+2018-04-11 20:45:13 DEBUG Driver:27 - Testing logger in driver
+2018-04-11 20:50:41 DEBUG Driver:34 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 17:40:56 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 17:40:56 DEBUG Membership:78 - Members received from Primary: 
+2018-04-13 17:40:57 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 17:45:29 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 17:45:29 DEBUG Membership:78 - Members received from Primary: 
+2018-04-13 17:45:29 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 18:20:02 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 18:20:03 DEBUG Membership:78 - Members received from Primary: 
+2018-04-13 18:20:03 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 18:21:45 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 18:21:45 DEBUG Membership:78 - Members received from Primary: 
+2018-04-13 18:21:46 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 18:55:38 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 18:55:38 DEBUG Membership:85 - Status Code Received Unknown when registering New Front End Server
+2018-04-13 18:55:39 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 19:00:28 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 19:00:29 DEBUG Membership:85 - Status Code Received Unknown when registering New Front End Server
+2018-04-13 19:00:29 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 19:01:20 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 19:01:20 DEBUG Membership:78 - Members received from Primary: 
+2018-04-13 19:01:21 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 19:06:26 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 19:06:26 DEBUG Membership:78 - Members received from Primary: 
+2018-04-13 19:06:27 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 19:09:36 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 19:09:37 DEBUG Membership:78 - Members received from Primary: 
+2018-04-13 19:09:37 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 19:10:39 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 19:10:40 DEBUG Membership:78 - Members received from Primary: 
+2018-04-13 19:10:40 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 19:11:19 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 19:11:20 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 19:11:35 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 19:11:36 DEBUG Membership:78 - Members received from Primary: 
+2018-04-13 19:11:36 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 19:55:26 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 19:55:27 DEBUG Membership:78 - Members received from Primary: 
+2018-04-13 19:55:27 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 20:01:05 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 20:01:06 DEBUG Membership:78 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"}]}
+
+2018-04-13 20:01:06 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-13 20:06:01 DEBUG Membership:57 - New Web Front End Service Joining ... localhost:8080
+2018-04-13 20:06:02 DEBUG Membership:79 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"}]}
+
+2018-04-13 20:06:02 DEBUG Membership:186 - Members List:
+[ localhost:8081, Type: EVENT, Primary: false, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-13 20:06:02 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
