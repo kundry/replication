@@ -13,6 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class EventData {
     /** Thread Safe Data Structure thar contains the list of events registered */
     private SortedMap<Integer,Event> eventsMap;
+    public static volatile int VERSION;
     private ReentrantLock lock;
 
     /** Makes sure only one EvenData is instantiated. */
@@ -22,6 +23,7 @@ public class EventData {
     private EventData() {
         eventsMap = Collections.synchronizedSortedMap(new TreeMap<Integer,Event>());
         lock = new ReentrantLock();
+        VERSION = 0;
     }
 
     /** Makes sure only one EvenData is instantiated. Returns the Singleton */

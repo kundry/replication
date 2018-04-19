@@ -16,7 +16,7 @@ import java.util.Queue;
 public class SendingReplicaWorker implements Runnable {
     boolean beingPrimary;
     private String hostAndPort;
-    private Queue<Write> writesQueue;
+    private Queue<Write> writesQueue; // it should be threadsafe
     final static Logger logger = Logger.getLogger(SendingReplicaWorker.class);
     //private ArrayList<Data> writeReceived;
 
@@ -57,7 +57,6 @@ public class SendingReplicaWorker implements Runnable {
                 while (!writesQueue.isEmpty()) {
                     Write incomingWrite = writesQueue.remove();
                     String url = hostAndPort + incomingWrite.getPath();
-                    //send request to follower
                     try {
                         URL urlObj = new URL(url);
                         HttpURLConnection conn  = (HttpURLConnection) urlObj.openConnection();
@@ -69,19 +68,21 @@ public class SendingReplicaWorker implements Runnable {
                         int responseCode = conn.getResponseCode();
                         switch (responseCode) {
                             case HttpServletResponse.SC_OK:
-                                logger.debug("Write to " + url + " was replicated successfully");
+                                //logger.debug("Write to " + url + " was replicated successfully");
                                 break;
                             default:
-                                logger.debug("Status Code Received Unknown when replicating write to: " + url);
+                                //logger.debug("Status Code Received Unknown when replicating write to: " + url);
                                 break;
                         }
+                        //incomingWrite.latch.countDown();
+                        incomingWrite.decrementLatch();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
                 //timeout = 50000;
             }
-            //deregisterFromDownloadMap(key); deregisterFromChannel();
+            // deregisterFromChannel();
             //how to exit the while ? here or when I am notified of not being primary anymore
         }
     }

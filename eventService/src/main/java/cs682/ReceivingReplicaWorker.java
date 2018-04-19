@@ -5,8 +5,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -25,7 +23,6 @@ public class ReceivingReplicaWorker implements Runnable {
             this.notify();
         }
     }
-
 
     @Override
     public void run() {
@@ -60,13 +57,12 @@ public class ReceivingReplicaWorker implements Runnable {
             int userId = ((Long)jsonObj.get("userid")).intValue();
             String eventName = (String) jsonObj.get("eventname");
             int numTickets = ((Long)jsonObj.get("numtickets")).intValue();
-            UserServiceLink userService = new UserServiceLink();
-            if (userService.isValidUserId(userId)) {
-                int id = EventServlet.eventData.getLastEventId() + 1;
-                Event event = new Event(id, eventName, userId, numTickets);
-                EventServlet.eventData.addEvent(event);
-                EventServlet.eventData.printEventList();
-            }
+            int id = EventServlet.eventData.getLastEventId() + 1;
+            int version = ((Long)jsonObj.get("versionid")).intValue();
+            Event event = new Event(id, eventName, userId, numTickets);
+            EventServlet.eventData.addEvent(event);
+            logger.debug("/create replicated: " + requestBody);
+            EventData.VERSION = version;
         } catch (ParseException e) {
             e.printStackTrace();
         }

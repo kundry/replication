@@ -365,3 +365,84 @@ Members List:[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
 2018-04-15 13:21:25 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
 2018-04-15 13:21:25 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8083/heartbeat
 2018-04-15 13:21:25 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat
+2018-04-18 14:46:40 DEBUG EventServlet:46 - Write received: /create
+2018-04-18 14:46:40 DEBUG EventServlet:311 - Replication of /create has started
+2018-04-18 14:46:40 DEBUG EventServlet:314 - latch setjava.util.concurrent.CountDownLatch@146cc0a6[Count = 2]
+2018-04-18 14:46:40 DEBUG EventServlet:318 - latch before awaitjava.util.concurrent.CountDownLatch@146cc0a6[Count = 2]
+2018-04-18 14:51:26 DEBUG EventServlet:46 - Write received: /create
+2018-04-18 14:51:26 DEBUG EventServlet:311 - Replication of /create has started
+2018-04-18 14:51:26 DEBUG EventServlet:314 - latch setjava.util.concurrent.CountDownLatch@119be34e[Count = 2]
+2018-04-18 14:51:26 DEBUG EventServlet:318 - latch before awaitjava.util.concurrent.CountDownLatch@119be34e[Count = 2]
+2018-04-18 14:59:23 DEBUG EventServlet:45 - Write received: /create
+2018-04-18 14:59:23 DEBUG EventServlet:311 - Replication of /create has started
+2018-04-18 14:59:23 DEBUG EventServlet:314 - latch set java.util.concurrent.CountDownLatch@4462bbec[Count = 2]
+2018-04-18 14:59:23 DEBUG EventServlet:318 - latch before await java.util.concurrent.CountDownLatch@4462bbec[Count = 2]
+2018-04-18 15:02:37 DEBUG EventServlet:45 - Write received: /create
+2018-04-18 15:02:37 DEBUG EventServlet:312 - Replication of /create has started
+2018-04-18 15:02:37 DEBUG EventServlet:315 - latch set java.util.concurrent.CountDownLatch@4d5aa789[Count = 2]
+2018-04-18 15:02:37 DEBUG EventServlet:319 - latch before await java.util.concurrent.CountDownLatch@4d5aa789[Count = 2]
+2018-04-18 15:17:22 DEBUG EventServlet:45 - Write received: /create
+2018-04-18 15:17:22 DEBUG EventServlet:311 - Replication of /create has started
+2018-04-18 15:17:22 DEBUG EventServlet:314 - latch set java.util.concurrent.CountDownLatch@5092a6a7[Count = 2]
+2018-04-18 15:17:22 DEBUG EventServlet:318 - latch before await java.util.concurrent.CountDownLatch@5092a6a7[Count = 2]
+2018-04-18 15:17:22 DEBUG SendingReplicaWorker:71 - Write to http://localhost:8083/create was replicated successfully
+2018-04-18 15:17:22 DEBUG SendingReplicaWorker:71 - Write to http://localhost:8082/create was replicated successfully
+2018-04-18 15:17:22 DEBUG EventServlet:320 - latch after await java.util.concurrent.CountDownLatch@5092a6a7[Count = 0]
+2018-04-18 15:17:22 DEBUG EventServlet:322 - Replication of /create has finished
+2018-04-18 17:06:47 Event Service Starting on port: 8081
+Event Service Starting on port: 8081
+Event Service Starting at localhoston port: 8081
+Event Service Starting at localhost on port: 8081
+Event Service Starting at localhost on port: 8081
+Writing locally
+1 - party
+Total tickets = 10 Available = 10 Sold = 0
+
+Write received: /create
+Replication of /create has started
+latch set java.util.concurrent.CountDownLatch@39095928[Count = 2]
+latch before await java.util.concurrent.CountDownLatch@39095928[Count = 2]
+latch after await java.util.concurrent.CountDownLatch@39095928[Count = 0]
+Replication of /create has finished
+{"eventid":1}
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+Writing locally
+Replication has started
+latch set java.util.concurrent.CountDownLatch@78077b20[Count = 0]
+latch before await java.util.concurrent.CountDownLatch@78077b20[Count = 0]
+latch after await java.util.concurrent.CountDownLatch@78077b20[Count = 0]
+Replication has finished
+{"eventid":1}
+Event Service Starting at localhost on port: 8081
+
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+Replication has started
+latch set java.util.concurrent.CountDownLatch@22b418d1[Count = 2]
+latch before await java.util.concurrent.CountDownLatch@22b418d1[Count = 2]
+latch after await java.util.concurrent.CountDownLatch@22b418d1[Count = 0]
+Replication has finished
+{"eventid":1}
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+Replication has started
+latch set java.util.concurrent.CountDownLatch@2dbacb53[Count = 2]
+latch before await java.util.concurrent.CountDownLatch@2dbacb53[Count = 2]
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+Replication has started
+latch set java.util.concurrent.CountDownLatch@32612c90[Count = 2]
+latch before await java.util.concurrent.CountDownLatch@32612c90[Count = 2]

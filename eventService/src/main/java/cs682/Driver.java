@@ -13,11 +13,6 @@ import org.apache.log4j.Logger;
  */
 public class Driver {
 
-    //private static int SELF_EVENT_SERVICE_PORT;
-    //public static String SELF_EVENT_SERVICE_HOST;
-    //public static int USER_SERVICE_PORT;
-    //public static String USER_SERVICE_HOST;
-
     public static Membership membership = new Membership();
     final static Logger logger = Logger.getLogger(Driver.class);
 
@@ -25,18 +20,18 @@ public class Driver {
 
         Properties config = loadConfig("config.properties");
         membership.loadInitMembers(config);
-
         Server jettyHttpServer = new Server(Membership.SELF_EVENT_SERVICE_PORT);
-        System.out.println("EVENT_SERVICE_PORT: "+ Membership.SELF_EVENT_SERVICE_PORT);
         ServletHandler jettyHandler = new ServletHandler();
         jettyHandler.addServletWithMapping(new ServletHolder(new EventServlet()), "/*");
         jettyHttpServer.setHandler(jettyHandler);
+
         try {
             jettyHttpServer.start();
+            logger.debug("Event Service Starting at "+ Membership.SELF_EVENT_SERVICE_HOST + " on port: "+ Membership.SELF_EVENT_SERVICE_PORT + System.lineSeparator());
             Timer timer = new Timer("Timer");
             long delay  = 10000L;
             long period = 120000L;
-            timer.scheduleAtFixedRate(new HeartBeatTimeTask(membership.getMembers()), delay, period);
+            //timer.scheduleAtFixedRate(new HeartBeatTimeTask(membership.getMembers()), delay, period);
         } catch (Exception e) {
             e.printStackTrace();
         }

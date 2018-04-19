@@ -18,7 +18,6 @@ import java.util.concurrent.Executors;
 
 public class Membership {
     private static final List<Member> members = Collections.synchronizedList(new ArrayList<Member>());
-    //private static ArrayList<Member> members = new ArrayList<>();
     public static boolean PRIMARY;
     public static int SELF_EVENT_SERVICE_PORT;
     public static String SELF_EVENT_SERVICE_HOST;
@@ -50,9 +49,6 @@ public class Membership {
         PRIMARY_PORT = Integer.parseInt(config.getProperty("primaryport"));
 
         String primaryStatus =  config.getProperty("primary");
-        if (primaryStatus.equalsIgnoreCase("on")) PRIMARY = true;
-        else PRIMARY = false;
-
         SELF_JOIN_MODE = config.getProperty("eventservicejoining");
 
         if (SELF_JOIN_MODE.equalsIgnoreCase("on")) {
@@ -69,9 +65,14 @@ public class Membership {
             Member webFrontEnd = new Member(config.getProperty("frontendhost"), config.getProperty("frontendport"),"FRONT_END", false, 0);
             members.add(webFrontEnd);
             ID_COUNT = 3;
-            if (PRIMARY){
-                initSendingReplicaChannel();
-            }
+        }
+
+        if (primaryStatus.equalsIgnoreCase("on")) {
+            PRIMARY = true;
+            initSendingReplicaChannel();
+        } else {
+            PRIMARY = false;
+            replicationThreadPool.submit(EventServlet.receiverWorker);
         }
     }
 
@@ -318,7 +319,7 @@ public class Membership {
         return list;
     }
 
-    public  void initSendingReplicaChannel(){
+    public  void initSendingReplicaChannel() {
         synchronized (members) {
             for (Member m : members) {
                 if(m.getType().equals("EVENT") && !m.getIsPrimary()) {
