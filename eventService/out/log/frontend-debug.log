@@ -446,3 +446,219 @@ Write received: /create
 Replication has started
 latch set java.util.concurrent.CountDownLatch@32612c90[Count = 2]
 latch before await java.util.concurrent.CountDownLatch@32612c90[Count = 2]
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+
+Replication has started
+latch set java.util.concurrent.CountDownLatch@2dbacb53[Count = 2]
+latch before await java.util.concurrent.CountDownLatch@2dbacb53[Count = 2]
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+
+Replication has started
+latch set java.util.concurrent.CountDownLatch@6a7d0782[Count = 2]
+latch before await java.util.concurrent.CountDownLatch@6a7d0782[Count = 2]
+latch after await java.util.concurrent.CountDownLatch@6a7d0782[Count = 0]
+Replication has finished
+{"eventid":1}
+Write received: /purchase/1
+{"userid": 2305, "eventid":1, "tickets":2}
+
+Replication has started
+latch set java.util.concurrent.CountDownLatch@4e1e6778[Count = 2]
+latch before await java.util.concurrent.CountDownLatch@4e1e6778[Count = 2]
+latch after await java.util.concurrent.CountDownLatch@4e1e6778[Count = 0]
+Replication has finished
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+
+Replication has started
+latch set java.util.concurrent.CountDownLatch@eb3884b[Count = 2]
+latch before await java.util.concurrent.CountDownLatch@eb3884b[Count = 2]
+latch after await java.util.concurrent.CountDownLatch@eb3884b[Count = 0]
+Replication has finished
+{"eventid":1}
+Write received: /purchase/1
+{"userid": 2305, "eventid":1, "tickets":2}
+
+1 - party
+Total tickets = 10
+ Available = 8
+ Sold = 2
+
+Replication has started
+latch set java.util.concurrent.CountDownLatch@4a8bf755[Count = 2]
+latch before await java.util.concurrent.CountDownLatch@4a8bf755[Count = 2]
+latch after await java.util.concurrent.CountDownLatch@4a8bf755[Count = 0]
+Replication has finished
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+Replication has started
+latch set java.util.concurrent.CountDownLatch@2dbacb53[Count = 2]
+latch before await java.util.concurrent.CountDownLatch@2dbacb53[Count = 2]
+latch after await java.util.concurrent.CountDownLatch@2dbacb53[Count = 0]
+Replication has finished
+{"eventid":1}
+
+Write received: /purchase/1
+{"userid": 2305, "eventid":1, "tickets":2}
+
+Replication has started
+latch set java.util.concurrent.CountDownLatch@4a8bf755[Count = 2]
+latch before await java.util.concurrent.CountDownLatch@4a8bf755[Count = 2]
+latch after await java.util.concurrent.CountDownLatch@4a8bf755[Count = 0]
+Replication has finished
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+1 - party
+ Total tickets = 10
+ Available = 10
+ Sold = 0
+
+Replication has started
+Replication has finished
+{"eventid":1}
+
+Write received: /purchase/1
+{"userid": 2305, "eventid":1, "tickets":2}
+
+1 - party
+ Total tickets = 10
+ Available = 8
+ Sold = 2
+
+Replication has started
+Replication has finished
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+Writing locally
+1 - party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication has started ...
+Replication has finished!
+Responding {"eventid":1}
+
+Write received: /purchase/1
+{"userid": 2305, "eventid":1, "tickets":2}
+
+Writing locally
+1 - party
+Total tickets = 10
+Available = 8
+Sold = 2
+
+Replication has started ...
+Replication has finished!
+Responding: SC_OK
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+Writing locally
+1 - party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication has started ...
+Replication has finished!
+Responding {"eventid":1}
+
+Write received: /purchase/1
+{"userid": 2305, "eventid":1, "tickets":2}
+
+Writing locally
+1 - party
+Total tickets = 10
+Available = 8
+Sold = 2
+
+Replication has started ...
+Replication has finished!
+Responding: SC_OK
+Event Service Starting at localhost on port: 8081
+
+Write received: /create
+{"userid":2305, "eventname":"party", "numtickets":10}
+
+Writing locally
+1 - party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication has started ...
+Replication has finished!
+Responding {"eventid":1}
+
+Write received: /create
+{"userid":2318, "eventname":"10K Run", "numtickets":20}
+
+Writing locally
+2 - 10K Run
+Total tickets = 20
+Available = 20
+Sold = 0
+
+Replication has started ...
+Replication has finished!
+Responding {"eventid":2}
+
+Write received: /purchase/1
+{"userid": 2305, "eventid":1, "tickets":5}
+
+Writing locally
+1 - party
+Total tickets = 10
+Available = 5
+Sold = 5
+
+Replication has started ...
+Replication has finished!
+Responding: SC_OK
+Write received: /purchase/2
+{"userid": 2305, "eventid":1, "tickets":1}
+
+Writing locally
+1 - party
+Total tickets = 10
+Available = 4
+Sold = 6
+
+Replication has started ...
+Replication has finished!
+Responding: SC_OK
+Write received: /purchase/2
+{"userid": 2305, "eventid":2, "tickets":1}
+
+Writing locally
+2 - 10K Run
+Total tickets = 20
+Available = 19
+Sold = 1
+
+Replication has started ...
+Replication has finished!
+Responding: SC_OK

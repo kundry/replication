@@ -26,11 +26,9 @@ public class ReceivingReplicaWorker implements Runnable {
 
     @Override
     public void run() {
-        //long timeout = 50000;
         synchronized (this) {
             while (beingFollower) {
                 try {
-                    //this.wait(timeout);
                     this.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -43,7 +41,6 @@ public class ReceivingReplicaWorker implements Runnable {
                         executePurchase(incomingWrite);
                     }
                 }
-                //timeout = 50000;
             }
             // deregisterFromChannel();
             //how to exit the while ? here or when I am notified of not being primary anymore
@@ -68,6 +65,20 @@ public class ReceivingReplicaWorker implements Runnable {
         }
     }
     private void executePurchase(Write incomingWrite){
-
+        try {
+            String requestBody = incomingWrite.getJsonBody();
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObj=  (JSONObject) parser.parse(requestBody);
+            int eventId = ((Long)jsonObj.get("eventid")).intValue();
+            int tickets = ((Long)jsonObj.get("tickets")).intValue();
+            int version = ((Long)jsonObj.get("versionid")).intValue();
+            boolean updateTickets = EventServlet.eventData.updateNumTickets(eventId, tickets);
+            if (updateTickets) logger.debug(incomingWrite.getPath() + " replicated: " + requestBody);
+            Event event = EventServlet.eventData.getEventDetails(eventId);
+            logger.debug(event.toString());
+            EventData.VERSION = version;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

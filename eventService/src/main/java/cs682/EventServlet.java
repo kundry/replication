@@ -40,7 +40,7 @@ public class EventServlet extends HttpServlet {
                 synchronized (this) {
                     String requestBody = getRequestBody(request);
                     logger.debug("Write received: " + pathInfo);
-                    logger.debug(requestBody + System.lineSeparator());
+                    logger.debug(requestBody);
                     Event event = createEvent(requestBody);
                     if (event != null) {
                         EventData.VERSION++;
@@ -62,18 +62,28 @@ public class EventServlet extends HttpServlet {
         } else if (pathInfo.equals("/members/add")) {
             membership.addNotifiedServer(request, response);
         } else {
-            System.out.println("Purchase tickets");
             if (pathInfo.matches("/purchase/([\\d]+)")) {
-                purchaseTicket(request, response);
                 if (Membership.PRIMARY) {
                     synchronized (this) {
                         String requestBody = getRequestBody(request);
                         logger.debug("Write received: " + pathInfo);
                         logger.debug(requestBody);
-
+                        boolean success = purchaseTicket(requestBody);
+                        if (success){
+                            EventData.VERSION++;
+                            int vId = EventData.VERSION;
+                            boolean replicationSuccess = replicateWrite(requestBody, pathInfo, vId);
+                            if (replicationSuccess) {
+                                logger.debug("Responding: SC_OK");
+                                response.setStatus(HttpServletResponse.SC_OK);
+                            }
+                        } else {
+                            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        }
                     }
                 } else {
-                    // follower
+                    applyWrite(request, pathInfo);
+                    response.setStatus(HttpServletResponse.SC_OK);
                 }
             } else {
                 System.out.println("Invalid Path");
@@ -101,44 +111,11 @@ public class EventServlet extends HttpServlet {
     }
 
     /**
-     * Creates a new event by parsing the event data from the request.
-     * It validates the existence of the user by communicating with the
+     * Creates a new event. It validates the existence of the user by communicating with the
      * User Service through the UserServiceLink (API) It returns the event
      * object created
      * @param requestBody http request
      * */
-//    private void createEvent(HttpServletRequest request, HttpServletResponse response) {
-//        try {
-//            String requestBody = getRequestBody(request);
-//            JSONParser parser = new JSONParser();
-//            JSONObject jsonObj = (JSONObject) parser.parse(requestBody);
-//            int userId = ((Long)jsonObj.get("userid")).intValue();
-//            String eventName = (String) jsonObj.get("eventname");
-//            int numTickets = ((Long)jsonObj.get("numtickets")).intValue();
-//            UserServiceLink userService = new UserServiceLink();
-//            if (userService.isValidUserId(userId)) {
-//                int id = eventData.getLastEventId() + 1;
-//                Event event = new Event(id, eventName, userId, numTickets);
-//                eventData.addEvent(event);
-//                JSONObject json = createJsonResponseNewEvent(id);
-//                String jsonResponse = json.toString();
-//                System.out.println(jsonResponse);
-//                response.setStatus(HttpServletResponse.SC_OK);
-//                response.setContentType("application/json;charset=UTF-8");
-//                PrintWriter out = response.getWriter();
-//                out.write(jsonResponse);
-//                out.flush();
-//                out.close();
-//                eventData.printEventList();
-//            } else {
-//                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     private Event createEvent(String requestBody) {
         Event event = null;
@@ -153,6 +130,8 @@ public class EventServlet extends HttpServlet {
                 int id = eventData.getLastEventId() + 1;
                 event = new Event(id, eventName, userId, numTickets);
                 eventData.addEvent(event);
+                logger.debug("Writing locally");
+                logger.debug(event.toString());
             }
         } catch (ParseException e) {
             e.printStackTrace();
@@ -164,7 +143,7 @@ public class EventServlet extends HttpServlet {
         try {
             JSONObject json = createJsonResponseNewEvent(event.getId());
             String jsonResponse = json.toString();
-            logger.debug(jsonResponse);
+            logger.debug("Responding "+ jsonResponse + System.lineSeparator());
             response.setStatus(HttpServletResponse.SC_OK);
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter out = response.getWriter();
@@ -261,8 +240,8 @@ public class EventServlet extends HttpServlet {
      * Allows a user to purchase tickets for a given event. It parses the data from the request.
      * Updates the amount of tickets of the event communicates with the User Service to add the
      * tickets to the corresponding user.
-     * @param request http request
-     * @param response http response
+     * @param requestBody request Body
+     *
      * */
 //    private void purchaseTicket(HttpServletRequest request, HttpServletResponse response) {
 //        try {
@@ -296,10 +275,9 @@ public class EventServlet extends HttpServlet {
 //        }
 //    }
 
-    private void purchaseTicket(HttpServletRequest request, HttpServletResponse response) {
+    private boolean purchaseTicket(String requestBody) {
+        boolean success = false;
         try {
-            String requestBody = getRequestBody(request);
-            System.out.println(requestBody);
             JSONParser parser = new JSONParser();
             JSONObject jsonObj=  (JSONObject) parser.parse(requestBody);
             int userId = ((Long)jsonObj.get("userid")).intValue();
@@ -312,20 +290,24 @@ public class EventServlet extends HttpServlet {
                 if (ticketsUpdatedSuccessfully) {
                     ticketsAddedSuccessfully = userService.addTicketsToUser(userId, eventId, tickets);
                     if (ticketsAddedSuccessfully) {
-                        response.setStatus(HttpServletResponse.SC_OK);
+                        success = true;
+                        Event event = eventData.getEventDetails(eventId);
+                        logger.debug("Writing locally");
+                        logger.debug(event.toString());
                     } else {
                         eventData.undoUpdateNumTickets(eventId, tickets);
-                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        success = false;
                     }
                 } else {
-                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    success = false;
                 }
             } else {
-                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                success = false;
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        return success;
     }
 
     /**
@@ -344,18 +326,18 @@ public class EventServlet extends HttpServlet {
         boolean okInAll = false;
         try {
             Write write = new Write(pathInfo, jsonBody, vId);
-            logger.debug("Replication has started");
+            logger.debug("Replication has started ...");
             final CountDownLatch latch = new CountDownLatch(sendingReplicaChannel.size());
             write.setLatch(latch);
-            logger.debug("latch set " + latch );
+            //logger.debug("latch set " + latch );
             for (SendingReplicaWorker follower : sendingReplicaChannel) {
                 follower.queueWrite(write);
             }
-            logger.debug("latch before await " + latch );
+            //logger.debug("latch before await " + latch );
             latch.await();
-            logger.debug("latch after await " + latch );
+            //logger.debug("latch after await " + latch );
             okInAll = true;
-            logger.debug("Replication has finished");
+            logger.debug("Replication has finished!");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

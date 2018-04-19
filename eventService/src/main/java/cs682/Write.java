@@ -51,5 +51,4 @@ public class Write {
     public void decrementLatch(){
         this.latch.countDown();
     }
-
 }

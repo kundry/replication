@@ -18,7 +18,6 @@ public class SendingReplicaWorker implements Runnable {
     private String hostAndPort;
     private Queue<Write> writesQueue; // it should be threadsafe
     final static Logger logger = Logger.getLogger(SendingReplicaWorker.class);
-    //private ArrayList<Data> writeReceived;
 
     /** Constructor of the class that initialize the  parameters needed to establish the
      *  communication with the corresponding follower
@@ -29,7 +28,6 @@ public class SendingReplicaWorker implements Runnable {
         this.hostAndPort = hostAndPort;
         this.writesQueue = new LinkedList<>();
         this.beingPrimary = true;
-       //writeReceived = new ArrayList<>();
     }
 
     /** Method that adds the write received to a queue and performs the notify
@@ -45,11 +43,9 @@ public class SendingReplicaWorker implements Runnable {
 
     @Override
     public void run() {
-        //long timeout = 50000;
         synchronized (this) {
             while (beingPrimary) {
                 try {
-                    //this.wait(timeout);
                     this.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -74,13 +70,11 @@ public class SendingReplicaWorker implements Runnable {
                                 //logger.debug("Status Code Received Unknown when replicating write to: " + url);
                                 break;
                         }
-                        //incomingWrite.latch.countDown();
                         incomingWrite.decrementLatch();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-                //timeout = 50000;
             }
             // deregisterFromChannel();
             //how to exit the while ? here or when I am notified of not being primary anymore

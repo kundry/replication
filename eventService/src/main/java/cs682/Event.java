@@ -144,9 +144,9 @@ public class Event {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(id).append(" - ").append(name).append(System.lineSeparator());
-        sb.append("Total tickets = ").append(numTickets);
-        sb.append(" Available = ").append(avail);
-        sb.append(" Sold = ").append(purchased).append(System.lineSeparator());
+        sb.append("Total tickets = ").append(numTickets).append(System.lineSeparator());
+        sb.append("Available = ").append(avail).append(System.lineSeparator());
+        sb.append("Sold = ").append(purchased).append(System.lineSeparator());
         return sb.toString();
     }
 }
