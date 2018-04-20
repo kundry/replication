@@ -35,13 +35,13 @@ public class NotificationWorker implements Runnable {
             int responseCode = conn.getResponseCode();
             switch (responseCode) {
                 case HttpServletResponse.SC_OK:
-                    logger.debug("Notification of new server was successful:  " + url);
+                    logger.debug("The notification was successful:  " + url);
                     break;
                 case HttpServletResponse.SC_BAD_REQUEST:
-                    logger.debug("Notification of new server was successful:  " + url);
+                    logger.debug("The notification was successful:  " + url);
                     break;
                 default:
-                    logger.debug("Status Code Received Unknown for Notification of new serve: " + url);
+                    logger.debug("Status Code Received Unknown: " + url);
                     break;
             }
         } catch (IOException e) {

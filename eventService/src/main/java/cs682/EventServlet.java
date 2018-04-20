@@ -102,10 +102,16 @@ public class EventServlet extends HttpServlet {
         String pathInfo = request.getPathInfo();
         if (pathInfo.equals("/list")) {
             listAllEvents(response);
-        } else if (pathInfo.equals("/heartbeat") ){
+        } else if (pathInfo.equals("/heartbeat")){
             replyAlive(response);
-        } else{
-            System.out.println("List One");
+        } else if (pathInfo.matches("/election/([\\d]+)")) {
+            int senderPid = Integer.parseInt(pathInfo.substring(10));
+            logger.debug("Election Message received from " + senderPid);
+            membership.processElectionMessage(senderPid, response);
+        } else if (pathInfo.matches("/newprimary")) {
+            logger.debug("New Primary has been elected");
+            processNewPrimary(request, response);
+        } else {
             showOneEvent(request, response);
         }
     }
@@ -240,41 +246,9 @@ public class EventServlet extends HttpServlet {
      * Allows a user to purchase tickets for a given event. It parses the data from the request.
      * Updates the amount of tickets of the event communicates with the User Service to add the
      * tickets to the corresponding user.
-     * @param requestBody request Body
-     *
+     * @param requestBody request Body string
+     * @return true or false depending on the success of the operation
      * */
-//    private void purchaseTicket(HttpServletRequest request, HttpServletResponse response) {
-//        try {
-//            String requestBody = getRequestBody(request);
-//            System.out.println(requestBody);
-//            JSONParser parser = new JSONParser();
-//            JSONObject jsonObj=  (JSONObject) parser.parse(requestBody);
-//            int userId = ((Long)jsonObj.get("userid")).intValue();
-//            int eventId = ((Long)jsonObj.get("eventid")).intValue();
-//            int tickets = ((Long)jsonObj.get("tickets")).intValue();
-//            UserServiceLink userService = new UserServiceLink();
-//            boolean ticketsUpdatedSuccessfully, ticketsAddedSuccessfully;
-//            if (userService.isValidUserId(userId) && eventData.isRegistered(eventId)) {
-//                ticketsUpdatedSuccessfully = eventData.updateNumTickets(eventId, tickets);
-//                if (ticketsUpdatedSuccessfully) {
-//                    ticketsAddedSuccessfully = userService.addTicketsToUser(userId, eventId, tickets);
-//                    if (ticketsAddedSuccessfully) {
-//                        response.setStatus(HttpServletResponse.SC_OK);
-//                    } else {
-//                        eventData.undoUpdateNumTickets(eventId, tickets);
-//                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//                    }
-//                } else {
-//                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//                }
-//            } else {
-//                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            }
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     private boolean purchaseTicket(String requestBody) {
         boolean success = false;
         try {
@@ -348,4 +322,18 @@ public class EventServlet extends HttpServlet {
         Write write = new Write(pathInfo, jsonBody);
         receiverWorker.queueWrite(write);
     }
+    private void processNewPrimary(HttpServletRequest request, HttpServletResponse response){
+        try {
+            String requestBody = getRequestBody(request);
+            JSONParser parser = new JSONParser();
+            JSONObject json = (JSONObject) parser.parse(requestBody);
+            String primaryHost = (String) json.get("primaryhost");
+            int primaryPort = ((Long)json.get("primaryport")).intValue();
+            membership.updatePrimary(primaryHost, primaryPort);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

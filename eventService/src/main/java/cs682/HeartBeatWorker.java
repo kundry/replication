@@ -9,15 +9,21 @@ import java.net.URL;
 
 public class HeartBeatWorker implements Runnable {
     private String url;
+    private Member member;
     final static Logger logger = Logger.getLogger(NotificationWorker.class);
 
-    public HeartBeatWorker(String url){
-        this.url = url;
+//    public HeartBeatWorker(String url, boolean isPrimary){
+//        this.url = url;
+//        this.isPrimary = isPrimary;
+//    }
+    public HeartBeatWorker(Member m){
+        this.member = m;
+        this.url = "http://" + m.getHost() + ":" + m.getPort() + "/heartbeat";
     }
 
     @Override
     public void run() {
-        logger.debug("Sending HeartBeat " + url);
+        logger.debug("Sending HeartBeat to " + url);
         try {
             URL urlObj = new URL(url);
             HttpURLConnection conn  = (HttpURLConnection) urlObj.openConnection();
@@ -34,6 +40,11 @@ public class HeartBeatWorker implements Runnable {
             }
         } catch (IOException e) {
             logger.debug("Server Unreachable. HeartBeat has failed: " + url);
+            if (member.getIsPrimary()) {
+                Membership.startElection();
+            } else {
+                Membership.removeServerDown(member.getHost(), member.getPort());
+            }
         }
     }
 

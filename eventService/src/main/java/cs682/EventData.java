@@ -72,7 +72,6 @@ public class EventData {
             for (Integer key : keySet) {
                 Event eventCopy;
                 eventCopy = getEventDetails(key);
-                //eventsList.add(eventsMap.get(key));
                 eventsList.add(eventCopy);
             }
         }
@@ -208,6 +207,21 @@ public class EventData {
         }
     }
 
+    public void initEventData(JSONObject  json) {
+        VERSION = ((Long)json.get("version")).intValue();
+        JSONArray jsonArray = (JSONArray) json.get("Data");
+        Iterator<JSONObject> iterator = jsonArray.iterator();
+        synchronized (eventsMap) {
+            while (iterator.hasNext()) {
+                JSONObject obj = iterator.next();
+                Event event = new Event();
+                Event eventToAdd = event.fromJsonToEventObj(obj);
+                eventsMap.put(event.getId(), eventToAdd);
+            }
+        }
+    }
+    
+
     /**
      * Method that prints on the console the content
      * of the data structure of events
@@ -221,4 +235,6 @@ public class EventData {
             }
         }
     }
+
+
 }

@@ -1,5 +1,7 @@
 package cs682;
 
+import org.json.simple.JSONObject;
+
 /**
  * Class that represents an event and holds the id, name,
  * total tickets, available tickets and purchased tickets
@@ -135,6 +137,23 @@ public class Event {
      */
     public int getPurchased() {
         return this.purchased;
+    }
+
+    /**
+     * Converts from json to event object
+     * @param json json obj
+     * @return event object
+     */
+
+    public Event fromJsonToEventObj(JSONObject json)  {
+        Event event = new Event();
+        event.id = ((Long)json.get("id")).intValue();
+        event.name = (String)json.get("name");
+        event.userId = ((Long)json.get("userid")).intValue();
+        event.numTickets = ((Long)json.get("numtickets")).intValue();;
+        event.avail = ((Long)json.get("avail")).intValue();
+        event.purchased = ((Long)json.get("purchased")).intValue();
+        return event;
     }
 
     /**

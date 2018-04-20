@@ -64,10 +64,8 @@ public class SendingReplicaWorker implements Runnable {
                         int responseCode = conn.getResponseCode();
                         switch (responseCode) {
                             case HttpServletResponse.SC_OK:
-                                //logger.debug("Write to " + url + " was replicated successfully");
                                 break;
                             default:
-                                //logger.debug("Status Code Received Unknown when replicating write to: " + url);
                                 break;
                         }
                         incomingWrite.decrementLatch();

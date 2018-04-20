@@ -13,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -26,10 +27,12 @@ public class Membership {
     public static String SELF_JOIN_MODE;
     public static String PRIMARY_HOST;
     public static int PRIMARY_PORT;
-    private static volatile int ID_COUNT;
+    public static volatile int ID_COUNT;
+    public static boolean IN_ELECTION;
+    public static boolean ELECTION_REPLY;
+    protected static final EventData eventData = EventData.getInstance();
     private static ExecutorService notificationThreadPool = Executors.newFixedThreadPool(6);
     private static ExecutorService replicationThreadPool = Executors.newFixedThreadPool(6);
-
     final static Logger logger = Logger.getLogger(Membership.class);
 
 
@@ -48,6 +51,8 @@ public class Membership {
         PRIMARY_HOST = "http://" + config.getProperty("primaryhost");
         PRIMARY_PORT = Integer.parseInt(config.getProperty("primaryport"));
 
+        IN_ELECTION = false;
+        ELECTION_REPLY = false;
         String primaryStatus =  config.getProperty("primary");
         SELF_JOIN_MODE = config.getProperty("eventservicejoining");
 
@@ -55,6 +60,8 @@ public class Membership {
             logger.debug("New Event Service Joining ... " + SELF_EVENT_SERVICE_HOST +":"+ SELF_EVENT_SERVICE_PORT);
             ArrayList<Member> membersFromPrimary = getMembersFromPrimary();
             members.addAll(membersFromPrimary);
+            JSONObject  data = getDataFromPrimary();
+            eventData.initEventData(data);
         } else {
             Member primary = new Member(config.getProperty("primaryhost"), config.getProperty("primaryport"), "EVENT", true, 1);
             members.add(primary);
@@ -97,7 +104,6 @@ public class Membership {
             members.add(member);
             printMemberList();
             sendMyListOfMembers(response);
-            //notifyOtherServers(member); doing this before
             //send my data
         } catch (IOException e) {
             e.printStackTrace();
@@ -319,7 +325,7 @@ public class Membership {
         return list;
     }
 
-    public  void initSendingReplicaChannel() {
+    public void initSendingReplicaChannel() {
         synchronized (members) {
             for (Member m : members) {
                 if(m.getType().equals("EVENT") && !m.getIsPrimary()) {
@@ -331,5 +337,119 @@ public class Membership {
             }
         }
     }
+    private static ArrayList<Member> getCandidates(){
+        ArrayList<Member> candidates = new ArrayList<>();
+        synchronized (members) {
+            for (Member m : members) {
+                if(m.getType().equals("EVENT") && !m.getIsPrimary() && m.getPId()<ID_COUNT) {
+                 candidates.add(m);
+                }
+            }
+        }
+        return candidates;
+    }
+
+    public static void startElection() {
+        IN_ELECTION = true;
+        ArrayList<Member> candidates = getCandidates();
+        try {
+            final CountDownLatch latch = new CountDownLatch(candidates.size());
+            //final CountDownLatch latch = new CountDownLatch(1);
+            for (Member m : candidates) {
+                String url = "http://" + m.getHost() + ":" + m.getPort() + "/election/" + ID_COUNT;
+                ElectionWorker worker = new ElectionWorker(url, latch);
+                notificationThreadPool.submit(worker);
+            }
+            latch.await();
+            if(!ELECTION_REPLY || (candidates.size()==0)) {
+                JSONObject json = new JSONObject();
+                json.put("primaryhost", SELF_EVENT_SERVICE_HOST);
+                json.put("primaryport", SELF_EVENT_SERVICE_PORT);
+                synchronized (members) {
+                    for (Member m : members) {
+                        if (m.getIsPrimary()) {
+                            members.remove(m);
+                        } else if (m.getPId() == ID_COUNT){
+                            m.setIsPrimary(true);
+                            PRIMARY = true;
+                            PRIMARY_HOST = SELF_EVENT_SERVICE_HOST;
+                            PRIMARY_PORT = SELF_EVENT_SERVICE_PORT;
+                        } else {
+                            String url = "http://" + m.getHost() + ":" + m.getPort() + "/newprimary";
+                            NotificationWorker worker = new NotificationWorker(url, json.toString());
+                            notificationThreadPool.submit(worker);
+                        }
+                    }
+                }
+            }
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    public void processElectionMessage(int pId, HttpServletResponse response) {
+        if (pId > ID_COUNT) {
+            response.setStatus(HttpServletResponse.SC_OK);
+            if (!IN_ELECTION) {
+                startElection();
+            }
+        } else {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
+    }
+    public void updatePrimary (String newPrimaryHost , int newPrimaryPort){
+        PRIMARY_PORT = newPrimaryPort;
+        PRIMARY_HOST = newPrimaryHost;
+        synchronized (members) {
+            for (Member m : members) {
+                if(m.getType().equals("EVENT") && m.getIsPrimary()) {
+                   members.remove(m);
+                } else if (m.getType().equals("EVENT") && (m.getHost()== newPrimaryHost) && (Integer.parseInt(m.getPort())==newPrimaryPort)) {
+                    m.setIsPrimary(true);
+                }
+            }
+        }
+    }
+
+    public static void removeServerDown(String host, String port) {
+        synchronized (members) {
+            for (Member m : members) {
+                if(m.getHost().equals(host) && m.getPort().equals(port)) {
+                    members.remove(m);
+                }
+            }
+        }
+    }
+
+    public JSONObject getDataFromPrimary(){
+        String host = PRIMARY_HOST + ":" + String.valueOf(PRIMARY_PORT);
+        String path = "/members/data";
+        String url = host + path;
+        JSONObject json = null;
+        try {
+            URL urlObj = new URL(url);
+            HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+            conn.setDoInput(true);
+            conn.setRequestMethod("GET");
+            int responseCode = conn.getResponseCode();
+            switch (responseCode) {
+                case HttpServletResponse.SC_OK:
+                    logger.debug("Data received from Primary " + url);
+                    String jsonReceived = getResponseBody(conn);
+                    JSONParser parser = new JSONParser();
+                    json = (JSONObject) parser.parse(jsonReceived);
+                    break;
+                default:
+                    logger.debug("Problems getting data from primary " + url);
+                    break;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
+
 
 }

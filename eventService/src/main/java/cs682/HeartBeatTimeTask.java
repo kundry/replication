@@ -23,8 +23,9 @@ public class HeartBeatTimeTask extends TimerTask {
         System.out.println("Task performed on " + new Date());
         for (Member member : memberList){
             if(!(member.getHost().equals(Membership.SELF_EVENT_SERVICE_HOST) && member.getPort().equals(String.valueOf(Membership.SELF_EVENT_SERVICE_PORT)))){
-                String url = "http://" + member.getHost() + ":" + member.getPort() + "/heartbeat";
-                heartbeatThreadPool.submit(new HeartBeatWorker(url));
+                //String url = "http://" + member.getHost() + ":" + member.getPort() + "/heartbeat";
+                //heartbeatThreadPool.submit(new HeartBeatWorker(url, member.getIsPrimary()));
+                heartbeatThreadPool.submit(new HeartBeatWorker(member));
             }
         }
     }

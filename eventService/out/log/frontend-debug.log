@@ -662,3 +662,16 @@ Sold = 1
 Replication has started ...
 Replication has finished!
 Responding: SC_OK
+Event Service Starting at localhost on port: 8081
+
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8082/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8083/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+Event Service Starting at localhost on port: 8081
+
+Event Service Starting at localhost on port: 8081
+
+Election Message received from 1

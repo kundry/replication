@@ -1,7 +1,5 @@
 package cs682;
 
-
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -11,14 +9,12 @@ public class Write {
     private String path;
     private String jsonBody;
     public CountDownLatch latch;
-    //private int versionId;
 
     public Write(String path, String json, int vId) {
-        //this.versionId = vId;
         this.path = path;
         this.jsonBody = addVersionId(vId, json);
     }
-    //overloaded constructor
+
     public Write(String path, String json) {
         this.path = path;
         this.jsonBody = json;
@@ -28,8 +24,6 @@ public class Write {
         return this.path;
     }
     public String getJsonBody(){ return this.jsonBody; }
-    //public int getversionId(){ return this.versionId; }
-
 
     private String addVersionId(int vId, String json){
         String modifiedJson = null;
