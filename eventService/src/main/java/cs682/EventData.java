@@ -209,7 +209,7 @@ public class EventData {
 
     public void initEventData(JSONObject  json) {
         VERSION = ((Long)json.get("version")).intValue();
-        JSONArray jsonArray = (JSONArray) json.get("Data");
+        JSONArray jsonArray = (JSONArray) json.get("data");
         Iterator<JSONObject> iterator = jsonArray.iterator();
         synchronized (eventsMap) {
             while (iterator.hasNext()) {

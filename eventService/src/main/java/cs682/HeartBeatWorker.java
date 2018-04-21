@@ -41,7 +41,10 @@ public class HeartBeatWorker implements Runnable {
         } catch (IOException e) {
             logger.debug("Server Unreachable. HeartBeat has failed: " + url);
             if (member.getIsPrimary()) {
+
+                logger.debug("Primary Down");
                 Membership.startElection();
+                //Membership.removeServerDown(member.getHost(), member.getPort());
             } else {
                 Membership.removeServerDown(member.getHost(), member.getPort());
             }

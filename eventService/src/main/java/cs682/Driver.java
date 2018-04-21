@@ -17,21 +17,19 @@ public class Driver {
     final static Logger logger = Logger.getLogger(Driver.class);
 
     public static void main(String[] args) {
-
-        Properties config = loadConfig("config.properties");
-        membership.loadInitMembers(config);
-        Server jettyHttpServer = new Server(Membership.SELF_EVENT_SERVICE_PORT);
-        ServletHandler jettyHandler = new ServletHandler();
-        jettyHandler.addServletWithMapping(new ServletHolder(new EventServlet()), "/*");
-        jettyHttpServer.setHandler(jettyHandler);
-
         try {
+            Properties config = loadConfig("config.properties");
+            membership.loadInitMembers(config);
+            Server jettyHttpServer = new Server(Membership.SELF_EVENT_SERVICE_PORT);
+            ServletHandler jettyHandler = new ServletHandler();
+            jettyHandler.addServletWithMapping(new ServletHolder(new EventServlet()), "/*");
+            jettyHttpServer.setHandler(jettyHandler);
             jettyHttpServer.start();
-            logger.debug("Event Service Starting at "+ Membership.SELF_EVENT_SERVICE_HOST + " on port: "+ Membership.SELF_EVENT_SERVICE_PORT + System.lineSeparator());
+            logger.debug("Event Service Started");
             Timer timer = new Timer("Timer");
             long delay  = 10000L;
-            long period = 120000L;
-            //timer.scheduleAtFixedRate(new HeartBeatTimeTask(membership.getMembers()), delay, period);
+            long period = 10000L;
+            timer.scheduleAtFixedRate(new HeartBeatTimeTask(), delay, period);
         } catch (Exception e) {
             e.printStackTrace();
         }

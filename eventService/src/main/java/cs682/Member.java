@@ -81,7 +81,7 @@ public class Member {
      */
     public static Member fromJsonToMemberObj(JSONObject json){
         boolean primary;
-        if (json.get("isPrimary") == "true") primary = true;
+        if (json.get("isPrimary").equals("true")) primary = true;
         else primary = false;
         Member member = new Member((String)json.get("host"), (String)json.get("port"), (String)json.get("type"),primary, ((Long)json.get("pid")).intValue());
         return member;

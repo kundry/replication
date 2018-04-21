@@ -3,10 +3,7 @@ package cs682;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
 
 import org.apache.log4j.Logger;
@@ -39,8 +36,7 @@ public class EventServlet extends HttpServlet {
             if (Membership.PRIMARY){
                 synchronized (this) {
                     String requestBody = getRequestBody(request);
-                    logger.debug("Write received: " + pathInfo);
-                    logger.debug(requestBody);
+                    logger.debug(pathInfo);
                     Event event = createEvent(requestBody);
                     if (event != null) {
                         EventData.VERSION++;
@@ -61,6 +57,9 @@ public class EventServlet extends HttpServlet {
            membership.registerServer(request, response);
         } else if (pathInfo.equals("/members/add")) {
             membership.addNotifiedServer(request, response);
+        } else if (pathInfo.matches("/newprimary")) {
+            logger.debug("New Primary has been elected");
+            processNewPrimary(request, response);
         } else {
             if (pathInfo.matches("/purchase/([\\d]+)")) {
                 if (Membership.PRIMARY) {
@@ -108,9 +107,9 @@ public class EventServlet extends HttpServlet {
             int senderPid = Integer.parseInt(pathInfo.substring(10));
             logger.debug("Election Message received from " + senderPid);
             membership.processElectionMessage(senderPid, response);
-        } else if (pathInfo.matches("/newprimary")) {
-            logger.debug("New Primary has been elected");
-            processNewPrimary(request, response);
+        } else if (pathInfo.matches("/members/data")) {
+            logger.debug("New Member requesting data");
+            sendDataToNewMember(response);
         } else {
             showOneEvent(request, response);
         }
@@ -300,7 +299,7 @@ public class EventServlet extends HttpServlet {
         boolean okInAll = false;
         try {
             Write write = new Write(pathInfo, jsonBody, vId);
-            logger.debug("Replication has started ...");
+            logger.debug("Replication has started");
             final CountDownLatch latch = new CountDownLatch(sendingReplicaChannel.size());
             write.setLatch(latch);
             //logger.debug("latch set " + latch );
@@ -329,11 +328,27 @@ public class EventServlet extends HttpServlet {
             JSONObject json = (JSONObject) parser.parse(requestBody);
             String primaryHost = (String) json.get("primaryhost");
             int primaryPort = ((Long)json.get("primaryport")).intValue();
-            membership.updatePrimary(primaryHost, primaryPort);
+            Membership.updatePrimary(primaryHost, primaryPort);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
     }
+    private void sendDataToNewMember(HttpServletResponse response) {
+        try {
+            JSONObject responseJson = new JSONObject();
+            JSONArray eventsArray = eventData.createJsonEventsList();
+            responseJson.put("version", EventData.VERSION);
+            responseJson.put("data", eventsArray);
+            response.setStatus(HttpServletResponse.SC_OK);
+            response.setContentType("application/json;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.write(responseJson.toString());
+            out.flush();
+            out.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
 
+    }
 }
