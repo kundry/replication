@@ -13,7 +13,8 @@ import org.apache.log4j.Logger;
  */
 public class Driver {
 
-    public static Membership membership = new Membership();
+    //public static Membership membership = new Membership();
+    protected static final Membership membership = Membership.getInstance();
     final static Logger logger = Logger.getLogger(Driver.class);
 
     public static void main(String[] args) {
@@ -28,7 +29,7 @@ public class Driver {
             logger.debug("Event Service Started");
             Timer timer = new Timer("Timer");
             long delay  = 10000L;
-            long period = 10000L;
+            long period = 15000L;
             timer.scheduleAtFixedRate(new HeartBeatTimeTask(), delay, period);
         } catch (Exception e) {
             e.printStackTrace();

@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 
 public class HeartBeatTimeTask extends TimerTask {
     //private ArrayList<Member> memberList;
+    protected static final Membership membership = Membership.getInstance();
     final static Logger logger = Logger.getLogger(NotificationWorker.class);
     private static ExecutorService heartbeatThreadPool = Executors.newFixedThreadPool(6);
 
@@ -21,7 +22,7 @@ public class HeartBeatTimeTask extends TimerTask {
     @Override
     public void run() {
         //System.out.println("Task performed on " + new Date());
-        ArrayList<Member> memberList = Membership.getMembers();
+        ArrayList<Member> memberList = membership.getMembers();
         for (Member member : memberList){
             if(!(member.getHost().equals(Membership.SELF_EVENT_SERVICE_HOST) && member.getPort().equals(String.valueOf(Membership.SELF_EVENT_SERVICE_PORT)))){
                 //String url = "http://" + member.getHost() + ":" + member.getPort() + "/heartbeat";

@@ -20,7 +20,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Membership {
-    private static final List<Member> members = Collections.synchronizedList(new ArrayList<Member>());
+    //private static final List<Member> members = Collections.synchronizedList(new ArrayList<Member>());
+    private List<Member> members;
     private ReentrantLock lock;
     public static boolean PRIMARY;
     public static int SELF_EVENT_SERVICE_PORT;
@@ -38,6 +39,19 @@ public class Membership {
     private static ExecutorService replicationThreadPool = Executors.newFixedThreadPool(6);
     final static Logger logger = Logger.getLogger(Membership.class);
 
+    /** Makes sure only one Membership is instantiated. */
+    private static Membership singleton = new Membership();
+
+    /** Constructor */
+    private Membership() {
+        members = Collections.synchronizedList(new ArrayList<Member>());
+        lock = new ReentrantLock();
+    }
+
+    /** Makes sure only one EvenData is instantiated. Returns the Singleton */
+    public static Membership getInstance(){
+        return singleton;
+    }
 
     /**
      * It parses the properties file with configuration information
@@ -47,13 +61,10 @@ public class Membership {
     public void loadInitMembers(Properties config) {
         SELF_EVENT_SERVICE_PORT = Integer.parseInt(config.getProperty("selfeventport"));
         SELF_EVENT_SERVICE_HOST = config.getProperty("selfeventhost");
-
         USER_SERVICE_HOST = "http://" + config.getProperty("userhost");
         USER_SERVICE_PORT = Integer.parseInt(config.getProperty("userport"));
-
         PRIMARY_HOST = "http://" + config.getProperty("primaryhost");
         PRIMARY_PORT = Integer.parseInt(config.getProperty("primaryport"));
-
         IN_ELECTION = false;
         ELECTION_REPLY = false;
         String primaryStatus =  config.getProperty("primary");
@@ -161,7 +172,7 @@ public class Membership {
         }
     }
 
-    private  JSONObject createJSONOfMembers(){
+    private JSONObject createJSONOfMembers(){
         JSONObject obj = new JSONObject();
         JSONArray array = new JSONArray();
         synchronized (members) {
@@ -206,7 +217,7 @@ public class Membership {
         return members;
     }
 
-    private  HttpURLConnection registerWithPrimary() {
+    private HttpURLConnection registerWithPrimary() {
         String host = PRIMARY_HOST + ":" + String.valueOf(PRIMARY_PORT);
         String path = "/members/register";
         String url = host + path;
@@ -319,17 +330,17 @@ public class Membership {
         logger.debug(sb.toString());
     }
 
-    public static ArrayList<Member> getMembers(){
-        ArrayList<Member> list = new ArrayList<>();
+    public ArrayList<Member> getMembers(){
         synchronized (members) {
+            ArrayList<Member> list = new ArrayList<>();
             for (Member m : members) {
                 list.add(m);
             }
+            return list;
         }
-        return list;
     }
 
-    public static void initSendingReplicaChannel() {
+    public void initSendingReplicaChannel() {
         synchronized (members) {
             for (Member m : members) {
                 if(m.getType().equals("EVENT") && !m.getIsPrimary()) {
@@ -341,26 +352,25 @@ public class Membership {
             }
         }
     }
-    private static ArrayList<Member> getCandidates(){
-        ArrayList<Member> candidates = new ArrayList<>();
+    private ArrayList<Member> getCandidates(){
         synchronized (members) {
+            ArrayList<Member> candidates = new ArrayList<>();
             for (Member m : members) {
                 if(m.getType().equals("EVENT") && !m.getIsPrimary() && (m.getPId()<ID_COUNT)) {
                  candidates.add(m);
                  logger.debug("candidate " + m.toString());
                 }
             }
+            return candidates;
         }
-        return candidates;
     }
 
-    synchronized public static void startElection() {
+     public synchronized void startElection() {
         IN_ELECTION = true;
         ArrayList<Member> candidates = getCandidates();
         try {
             if (candidates.size() > 0) {
                 final CountDownLatch latch = new CountDownLatch(candidates.size());
-                //final CountDownLatch latch = new CountDownLatch(1);
                 for (Member m : candidates) {
                     String url = "http://" + m.getHost() + ":" + m.getPort() + "/election/" + ID_COUNT;
                     ElectionWorker worker = new ElectionWorker(url, latch);
@@ -369,12 +379,11 @@ public class Membership {
                 latch.await();
             }
             if (!ELECTION_REPLY || (candidates.size() == 0)) {
-                logger.debug("setting myself as primary");
+                logger.debug("Setting myself as primary");
                 PRIMARY = true;
-                PRIMARY_HOST = SELF_EVENT_SERVICE_HOST;
-                PRIMARY_PORT = SELF_EVENT_SERVICE_PORT;
-                updatePrimary(SELF_EVENT_SERVICE_HOST, SELF_EVENT_SERVICE_PORT);
                 removePrimary();
+                updatePrimary(SELF_EVENT_SERVICE_HOST, SELF_EVENT_SERVICE_PORT);
+                printMemberList();
                 notifyNewPrimary();
                 initSendingReplicaChannel();
             }
@@ -382,6 +391,8 @@ public class Membership {
             e.printStackTrace();
         }
     }
+
+
 
     public void processElectionMessage(int pId, HttpServletResponse response) {
         if (pId > ID_COUNT) {
@@ -393,43 +404,44 @@ public class Membership {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
-    public static void updatePrimary (String newPrimaryHost , int newPrimaryPort){
+    public void updatePrimary (String newPrimaryHost , int newPrimaryPort){
+        PRIMARY_HOST = "http://" + newPrimaryHost;
         PRIMARY_PORT = newPrimaryPort;
-        PRIMARY_HOST = newPrimaryHost;
         synchronized (members) {
             for (Member m : members) {
-//                if(m.getType().equals("EVENT") && m.getIsPrimary()) {
-//                   members.remove(m);
-//                } else
-
-                    if (m.getType().equals("EVENT") && (m.getHost().equals(newPrimaryHost)) && (Integer.parseInt(m.getPort())==newPrimaryPort)) {
+                if (m.getType().equals("EVENT") && (m.getHost().equals(newPrimaryHost)) && (Integer.parseInt(m.getPort())==newPrimaryPort)) {
                     m.setIsPrimary(true);
                 }
             }
         }
         logger.debug("List with new primary");
-        //printMemberList();
+        printMemberList();
     }
 
-    public static void removeServerDown(String host, String port) {
+    public void removeServerDown(String host, String port) {
         synchronized (members) {
-            for (Member m : members) {
+            Iterator<Member> iterator = members.iterator();
+            while (iterator.hasNext()) {
+                Member m = iterator.next();
                 if(m.getHost().equals(host) && m.getPort().equals(port)) {
-                    members.remove(m);
+                    iterator.remove();
                 }
             }
         }
     }
 
-    public static void removePrimary() {
+    public void removePrimary() {
         synchronized (members) {
-            for (Member m : members) {
-                if(m.getIsPrimary()) {
-                    members.remove(m);
-                }
+            Iterator<Member> iterator = members.iterator();
+            while (iterator.hasNext()) {
+                Member m = iterator.next();
+               if (m.getIsPrimary()) {
+                   iterator.remove();
+               }
             }
         }
     }
+
 
     public JSONObject getDataFromPrimary(){
         String host = PRIMARY_HOST + ":" + String.valueOf(PRIMARY_PORT);
@@ -471,7 +483,7 @@ public class Membership {
        return  id;
     }
 
-    public static void notifyNewPrimary(){
+    public void notifyNewPrimary(){
         JSONObject json = new JSONObject();
         json.put("primaryhost", SELF_EVENT_SERVICE_HOST);
         json.put("primaryport", SELF_EVENT_SERVICE_PORT);

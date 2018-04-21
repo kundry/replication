@@ -19,9 +19,10 @@ import java.util.concurrent.CountDownLatch;
 public class EventServlet extends HttpServlet {
 
     protected static final EventData eventData = EventData.getInstance();
+    protected static final Membership membership = Membership.getInstance();
     private static final ArrayList<SendingReplicaWorker> sendingReplicaChannel = new ArrayList();
     public static final ReceivingReplicaWorker receiverWorker = new ReceivingReplicaWorker();
-    private Membership membership = new Membership();
+    //private Membership membership = new Membership();
     final static Logger logger = Logger.getLogger(EventServlet.class);
     /**
      * Handles the POST Requests of creating new events and
@@ -328,7 +329,8 @@ public class EventServlet extends HttpServlet {
             JSONObject json = (JSONObject) parser.parse(requestBody);
             String primaryHost = (String) json.get("primaryhost");
             int primaryPort = ((Long)json.get("primaryport")).intValue();
-            Membership.updatePrimary(primaryHost, primaryPort);
+            membership.removePrimary();
+            membership.updatePrimary(primaryHost, primaryPort);
         } catch (ParseException e) {
             e.printStackTrace();
         }

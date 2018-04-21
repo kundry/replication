@@ -10,6 +10,7 @@ import java.net.URL;
 public class HeartBeatWorker implements Runnable {
     private String url;
     private Member member;
+    protected static final Membership membership = Membership.getInstance();
     final static Logger logger = Logger.getLogger(NotificationWorker.class);
 
 //    public HeartBeatWorker(String url, boolean isPrimary){
@@ -43,10 +44,10 @@ public class HeartBeatWorker implements Runnable {
             if (member.getIsPrimary()) {
 
                 logger.debug("Primary Down");
-                Membership.startElection();
+                membership.startElection();
                 //Membership.removeServerDown(member.getHost(), member.getPort());
             } else {
-                Membership.removeServerDown(member.getHost(), member.getPort());
+                membership.removeServerDown(member.getHost(), member.getPort());
             }
         }
     }
