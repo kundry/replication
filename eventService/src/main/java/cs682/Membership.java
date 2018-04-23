@@ -437,7 +437,6 @@ public class Membership {
             for (Member m : members) {
                 if(m.getType().equals("EVENT") && !m.getIsPrimary() && (m.getPId()<ID_COUNT)) {
                  candidates.add(m);
-                 logger.debug("candidate " + m.toString());
                 }
             }
             return candidates;
@@ -468,7 +467,7 @@ public class Membership {
                 PRIMARY = true;
                 removePrimary();
                 updatePrimary(SELF_EVENT_SERVICE_HOST, SELF_EVENT_SERVICE_PORT);
-                printMemberList();
+                //printMemberList();
                 notifyNewPrimary();
                 initSendingReplicaChannel();
             }

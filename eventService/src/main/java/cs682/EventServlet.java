@@ -71,7 +71,6 @@ public class EventServlet extends HttpServlet {
                             int vId = EventData.VERSION;
                             boolean replicationSuccess = replicateWrite(requestBody, pathInfo, vId);
                             if (replicationSuccess) {
-                                //logger.debug("Responding: SC_OK");
                                 response.setStatus(HttpServletResponse.SC_OK);
                             }
                         } else {
@@ -79,7 +78,7 @@ public class EventServlet extends HttpServlet {
                         }
                     }
                 } else {
-                    System.out.println("apply request" + pathInfo);
+                    System.out.println(pathInfo);
                     applyWrite(request, pathInfo);
                     response.setStatus(HttpServletResponse.SC_OK);
                 }
@@ -104,7 +103,7 @@ public class EventServlet extends HttpServlet {
             replyAlive(response);
         } else if (pathInfo.matches("/election/([\\d]+)")) {
             int senderPid = Integer.parseInt(pathInfo.substring(10));
-            logger.debug("Election Message from " + senderPid);
+            logger.debug("Election Message received ");
             membership.processElectionMessage(senderPid, response);
         } else if (pathInfo.matches("/members/data")) {
             sendDataToNewMember(response);

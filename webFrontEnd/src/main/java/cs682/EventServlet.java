@@ -40,8 +40,6 @@ public class EventServlet extends HttpServlet {
             Pattern pattern = Pattern.compile("/([\\d]+)/purchase/([\\d]+)");
             Matcher match = pattern.matcher(pathInfo);
             if (match.find()) {
-                //System.out.println(match.group(1));
-                //System.out.println(match.group(2));
                 int eventId = Integer.parseInt(match.group(1));
                 int userId = Integer.parseInt(match.group(2));
                 purchaseTickets(eventId, userId, request, response);
@@ -78,7 +76,7 @@ public class EventServlet extends HttpServlet {
             switch (responseCode) {
                 case HttpServletResponse.SC_OK:
                     String jsonResponse = getResponseBody(conn);
-                    System.out.println(jsonResponse);
+                    logger.debug(jsonResponse);
                     response.setStatus(HttpServletResponse.SC_OK);
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter outResponse = response.getWriter();
@@ -136,11 +134,11 @@ public class EventServlet extends HttpServlet {
                     String jsonResponse = getResponseBody(conn);
                     System.out.println(jsonResponse);
                     response.setStatus(HttpServletResponse.SC_OK);
-                    logger.debug("SC_OK");
+                    logger.debug("200: Tickets purchased");
                     break;
                 case HttpServletResponse.SC_BAD_REQUEST:
                     response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                    System.out.println("400: Tickets could not be purchased");
+                    logger.debug("400: Purchase failed");
                     break;
                 default:
                     response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

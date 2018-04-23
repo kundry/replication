@@ -21,7 +21,7 @@ public class ElectionWorker implements Runnable {
 
     @Override
     public void run() {
-        logger.debug("Sending election message to " + url);
+        logger.debug("Sending election message");
         try {
             URL urlObj = new URL(url);
             HttpURLConnection conn  = (HttpURLConnection) urlObj.openConnection();
@@ -32,7 +32,7 @@ public class ElectionWorker implements Runnable {
             switch (responseCode) {
                 case HttpServletResponse.SC_OK:
                     Membership.ELECTION_REPLY = true;
-                    logger.debug("OK received from election message:  " + url);
+                    logger.debug("Reply received");
                     Membership.IN_ELECTION = false;
                     membership.removePrimary();
                     break;
