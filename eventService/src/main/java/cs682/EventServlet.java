@@ -391,5 +391,6 @@ public class EventServlet extends HttpServlet {
         } catch (IOException e){
             e.printStackTrace();
         }
+
     }
 }

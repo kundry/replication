@@ -52,6 +52,9 @@ public class Membership {
         return singleton;
     }
 
+
+
+
     public void loadSelfConfiguration(Properties config){
         SELF_EVENT_SERVICE_PORT = Integer.parseInt(config.getProperty("selfeventport"));
         SELF_EVENT_SERVICE_HOST = config.getProperty("selfeventhost");
