@@ -1832,3 +1832,341 @@ New server localhost8080
 Notifying to http://localhost:8082/members/add
 The notification was successful:  http://localhost:8082/members/add
 Event Service Started
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+
+New localhost:8083
+Members sent
+Data sent
+EVENT SERVER Down
+Membership table updated
+Primary Started
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+
+New localhost:8083
+Members sent
+Data sent
+EVENT SERVER Down
+Membership table updated
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+
+New localhost:8083
+Members sent
+Data sent
+EVENT SERVER Down
+Membership table updated
+Primary Started
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+
+New localhost:8083
+Members sent
+Data sent
+EVENT SERVER Down
+Membership table updated
+
+New localhost:8083
+Members sent
+Data sent
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+
+New localhost:8083
+Members sent
+Data sent
+
+New localhost:8080
+
+/create
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication started
+Replication finished
+EVENT SERVER Down
+Membership table updated
+
+/purchase/1
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 5
+Sold = 5
+
+Replication started
+Replication finished
+
+New localhost:8083
+Members sent
+Data sent
+
+/purchase/1
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 3
+Sold = 7
+
+Replication started
+Replication finished
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+
+New localhost:8083
+Members sent
+Data sent
+EVENT SERVER Down
+Membership table updated
+
+New localhost:8080
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+
+New localhost:8083
+Members sent
+Data sent
+
+New localhost:8080
+
+/create
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication started
+Replication finished
+EVENT SERVER Down
+Membership table updated
+
+/purchase/1
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 5
+Sold = 5
+
+Replication started
+Replication finished
+
+New localhost:8083
+Members sent
+Data sent
+
+/purchase/1
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 3
+Sold = 7
+
+Replication started
+Replication finished
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+
+New localhost:8083
+Members sent
+Data sent
+
+New localhost:8080
+
+/create
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication started
+Replication finished
+EVENT SERVER Down
+Membership table updated
+
+/purchase/1
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 5
+Sold = 5
+
+Replication started
+Replication finished
+
+New localhost:8083
+Members sent
+Data sent
+
+/purchase/1
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 3
+Sold = 7
+
+Replication started
+Replication finished
+EVENT SERVER Down
+Membership table updated
+EVENT SERVER Down
+Membership table updated
+FRONT_END SERVER Down
+Membership table updated
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+
+New localhost:8083
+Members sent
+Data sent
+
+New localhost:8080
+
+/create
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication started
+Replication finished
+EVENT SERVER Down
+Membership table updated
+
+New localhost:8083
+Members sent
+Data sent
+
+/purchase/1
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 8
+Sold = 2
+
+Replication started
+Replication finished
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+
+New localhost:8083
+Members sent
+Data sent
+
+New localhost:8080
+
+/create
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication started
+Replication finished
+EVENT SERVER Down
+Membership table updated
+
+/purchase/1
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 8
+Sold = 2
+
+Replication started
+Replication finished
+
+New localhost:8082
+Members sent
+Data sent
+
+/purchase/1
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 3
+Sold = 7
+
+Replication started
+Replication finished
+Primary Started
+Primary Started
+
+New localhost:8082
+Members sent
+Data sent
+
+New localhost:8083
+Members sent
+Data sent
+
+New localhost:8080
+
+/create
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication started
+Replication finished
+EVENT SERVER Down
+Membership table updated
+
+New localhost:8083
+Members sent
+Data sent
+
+/purchase/1
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 8
+Sold = 2
+
+Replication started
+Replication finished
+Primary Started

@@ -37,12 +37,22 @@ public class Membership {
 
     /**
      * It parses the properties file with configuration information
+     * and load the host and port of the node launched
+     * @param config property object to parse
+     * */
+    public void loadSelfConfiguration(Properties config){
+        SELF_FRONT_END_PORT = Integer.parseInt(config.getProperty("selffrontendport"));
+        SELF_FRONT_END_HOST = config.getProperty("selffrontendhost");
+    }
+
+    /**
+     * It parses the properties file with configuration information
      * and load the data of the configuration of the initial nodes
      * @param config property object to parse
      * */
     public void loadInitMembers(Properties config) {
-        SELF_FRONT_END_PORT = Integer.parseInt(config.getProperty("selffrontendport"));
-        SELF_FRONT_END_HOST = config.getProperty("selffrontendhost");
+//        SELF_FRONT_END_PORT = Integer.parseInt(config.getProperty("selffrontendport"));
+//        SELF_FRONT_END_HOST = config.getProperty("selffrontendhost");
 
         USER_SERVICE_HOST = "http://" + config.getProperty("userhost");
         USER_SERVICE_PORT = Integer.parseInt(config.getProperty("userport"));

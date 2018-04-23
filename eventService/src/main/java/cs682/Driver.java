@@ -18,13 +18,17 @@ public class Driver {
 
     public static void main(String[] args) {
         try {
+
             Properties config = loadConfig("config.properties");
-            membership.loadInitMembers(config);
+            membership.loadSelfConfiguration(config);
+            //membership.loadInitMembers(config);
             Server jettyHttpServer = new Server(Membership.SELF_EVENT_SERVICE_PORT);
             ServletHandler jettyHandler = new ServletHandler();
             jettyHandler.addServletWithMapping(new ServletHolder(new EventServlet()), "/*");
             jettyHttpServer.setHandler(jettyHandler);
             jettyHttpServer.start();
+            membership.loadInitMembers(config);
+
             Timer timer = new Timer("Timer");
             long delay  = 10000L;
             long period = 15000L;

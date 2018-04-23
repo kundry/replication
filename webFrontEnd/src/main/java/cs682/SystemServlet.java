@@ -28,16 +28,7 @@ public class SystemServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response){
-        String pathInfo = request.getPathInfo();
-        if (pathInfo != null) {
-            if (pathInfo.equals("/newprimary")) {
-                logger.debug("New Primary elected");
-                processNewPrimary(request, response);
-
-            } else {
-                logger.debug("Invalid Path");
-            }
-        }
+        processNewPrimary(request, response);
     }
     private void processNewPrimary(HttpServletRequest request, HttpServletResponse response){
         try {
@@ -46,6 +37,7 @@ public class SystemServlet extends HttpServlet {
             JSONObject json = (JSONObject) parser.parse(requestBody);
             String primaryHost = (String) json.get("primaryhost");
             int primaryPort = ((Long)json.get("primaryport")).intValue();
+            logger.debug("New Primary " + primaryHost+":"+primaryPort);
             Membership.removePrimary();
             Membership.updatePrimary(primaryHost, primaryPort);
         } catch (ParseException e) {

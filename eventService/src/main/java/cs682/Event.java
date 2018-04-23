@@ -148,7 +148,7 @@ public class Event {
     public Event fromJsonToEventObj(JSONObject json)  {
         Event event = new Event();
         event.id = ((Long)json.get("eventid")).intValue();
-        event.name = (String)json.get("name");
+        event.name = (String)json.get("eventname");
         event.userId = ((Long)json.get("userid")).intValue();
         event.numTickets = ((Long)json.get("numtickets")).intValue();
         event.avail = ((Long)json.get("avail")).intValue();

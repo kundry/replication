@@ -52,14 +52,21 @@ public class Membership {
         return singleton;
     }
 
+
+
+
+    public void loadSelfConfiguration(Properties config){
+        SELF_EVENT_SERVICE_PORT = Integer.parseInt(config.getProperty("selfeventport"));
+        SELF_EVENT_SERVICE_HOST = config.getProperty("selfeventhost");
+    }
     /**
      * It parses the properties file with configuration information
      * and load the data of the configuration of the initial nodes
      * @param config property object to parse
      * */
     public void loadInitMembers(Properties config) {
-        SELF_EVENT_SERVICE_PORT = Integer.parseInt(config.getProperty("selfeventport"));
-        SELF_EVENT_SERVICE_HOST = config.getProperty("selfeventhost");
+        //SELF_EVENT_SERVICE_PORT = Integer.parseInt(config.getProperty("selfeventport"));
+        //SELF_EVENT_SERVICE_HOST = config.getProperty("selfeventhost");
         USER_SERVICE_HOST = "http://" + config.getProperty("userhost");
         USER_SERVICE_PORT = Integer.parseInt(config.getProperty("userport"));
         PRIMARY_HOST = "http://" + config.getProperty("primaryhost");
@@ -77,6 +84,7 @@ public class Membership {
             ID_COUNT = findMyId(membersFromPrimary);
             //printMemberList();
             JSONObject data = getDataFromPrimary();
+            //logger.debug("data from primary " + data.toString());
             eventData.initEventData(data);
         } else {
             logger.debug("Primary Started");
@@ -115,7 +123,6 @@ public class Membership {
             String host = (String)jsonObj.get("host");
             int port = ((Long)jsonObj.get("port")).intValue();
             String type = (String)jsonObj.get("type");
-
             logger.debug(System.lineSeparator() + "New " + host + ":" + port);
             int id = 0;
             if (type.equals("EVENT")){
@@ -403,7 +410,7 @@ public class Membership {
                 if(m.getType().equals("EVENT") && !m.getIsPrimary()) {
                     String hostAndPort = "http://" + m.getHost() + ":" + m.getPort();
                     SendingReplicaWorker worker = new SendingReplicaWorker(hostAndPort);
-                    EventServlet.registerInChannel(worker);
+                    EventServlet.registerInChannel(m.getPId(), worker);
                     replicationThreadPool.submit(worker);
                 }
             }
@@ -414,8 +421,8 @@ public class Membership {
         if(m.getType().equals("EVENT") && !m.getIsPrimary()) {
             String hostAndPort = "http://" + m.getHost() + ":" + m.getPort();
             SendingReplicaWorker worker = new SendingReplicaWorker(hostAndPort);
-            EventServlet.registerInChannel(worker);
             replicationThreadPool.submit(worker);
+            EventServlet.registerInChannel(m.getPId(),worker);
         }
     }
 
@@ -503,8 +510,8 @@ public class Membership {
                 }
             }
         }
-        logger.debug("List with new primary");
-        printMemberList();
+//        logger.debug("List with new primary");
+//        printMemberList();
     }
 
     /**
@@ -604,7 +611,7 @@ public class Membership {
         synchronized (members) {
             for (Member m : members) {
                 if (!m.getIsPrimary()){
-                    logger.debug("Notifying new primary");
+                    logger.debug("Notifying new primary ");
                     String url = "http://" + m.getHost() + ":" + m.getPort() + "/newprimary";
                     NotificationWorker worker = new NotificationWorker(url, json.toString());
                     notificationThreadPool.submit(worker);

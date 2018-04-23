@@ -20,7 +20,7 @@ public class EventServlet extends HttpServlet {
 
     protected static final EventData eventData = EventData.getInstance();
     protected static final Membership membership = Membership.getInstance();
-    private static final ArrayList<SendingReplicaWorker> sendingReplicaChannel = new ArrayList();
+    private static HashMap<Integer, SendingReplicaWorker> sendingReplicaChannel = new HashMap<>();
     public static final ReceivingReplicaWorker receiverWorker = new ReceivingReplicaWorker();
     final static Logger logger = Logger.getLogger(EventServlet.class);
     /**
@@ -58,7 +58,6 @@ public class EventServlet extends HttpServlet {
         } else if (pathInfo.equals("/members/add")) {
             membership.addNotifiedServer(request, response);
         } else if (pathInfo.matches("/newprimary")) {
-            logger.debug("New Primary elected");
             processNewPrimary(request, response);
         } else {
             if (pathInfo.matches("/purchase/([\\d]+)")) {
@@ -80,6 +79,7 @@ public class EventServlet extends HttpServlet {
                         }
                     }
                 } else {
+                    System.out.println("apply request" + pathInfo);
                     applyWrite(request, pathInfo);
                     response.setStatus(HttpServletResponse.SC_OK);
                 }
@@ -147,7 +147,6 @@ public class EventServlet extends HttpServlet {
         try {
             JSONObject json = createJsonResponseNewEvent(event.getId());
             String jsonResponse = json.toString();
-            //logger.debug("Responding "+ jsonResponse + System.lineSeparator());
             response.setStatus(HttpServletResponse.SC_OK);
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter out = response.getWriter();
@@ -290,13 +289,12 @@ public class EventServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
-    public static void registerInChannel(SendingReplicaWorker worker){
-        sendingReplicaChannel.add(worker);
+    public static void registerInChannel(Integer pid, SendingReplicaWorker worker){
+        sendingReplicaChannel.put(pid,worker);
     }
 
-    public static void deregisterInChannel(int pid){
-
-        //sendingReplicaChannel.add(worker);
+    public static void deregisterFromChannel(int pid){
+        sendingReplicaChannel.remove(pid);
     }
 
     private boolean replicateWrite(String jsonBody, String pathInfo, int vId) {
@@ -306,8 +304,8 @@ public class EventServlet extends HttpServlet {
             logger.debug("Replication started");
             final CountDownLatch latch = new CountDownLatch(sendingReplicaChannel.size());
             write.setLatch(latch);
-            for (SendingReplicaWorker follower : sendingReplicaChannel) {
-                follower.queueWrite(write);
+            for (Map.Entry<Integer, SendingReplicaWorker> entry : sendingReplicaChannel.entrySet()) {
+                entry.getValue().queueWrite(write);
             }
             latch.await();
             okInAll = true;
@@ -330,6 +328,7 @@ public class EventServlet extends HttpServlet {
             String primaryHost = (String) json.get("primaryhost");
             int primaryPort = ((Long)json.get("primaryport")).intValue();
             int version = ((Long)json.get("version")).intValue();
+            logger.debug("New Primary " + primaryHost + ":" + primaryPort);
             membership.removePrimary();
             membership.updatePrimary(primaryHost, primaryPort);
             eventData.initEventData(json);

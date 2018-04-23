@@ -44,11 +44,10 @@ public class HeartBeatWorker implements Runnable {
                 logger.debug(member.getType() + " SERVER Down" );
                 membership.removeServerDown(member.getHost(), member.getPort());
                 logger.debug("Membership table updated" );
-                if(member.getType().equals("EVENT")){
-                   //membership.deregisterFromChannel(member.getPId());
+                if(member.getType().equals("EVENT") && Membership.PRIMARY) {
+                   EventServlet.deregisterFromChannel(member.getPId());
                 }
             }
         }
     }
-
 }

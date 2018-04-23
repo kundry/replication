@@ -72,7 +72,7 @@ public class ReceivingReplicaWorker implements Runnable {
             int tickets = ((Long)jsonObj.get("tickets")).intValue();
             int version = ((Long)jsonObj.get("versionid")).intValue();
             boolean updateTickets = EventServlet.eventData.updateNumTickets(eventId, tickets);
-            if (updateTickets) logger.debug(incomingWrite.getPath());
+            if (updateTickets) logger.debug(System.lineSeparator() + incomingWrite.getPath());
             Event event = EventServlet.eventData.getEventDetails(eventId);
             logger.debug(event.toString());
             EventData.VERSION = version;

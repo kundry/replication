@@ -12,30 +12,25 @@ import org.apache.log4j.Logger;
  */
 public class Driver {
 
-    //private static int SELF_FRONT_END_PORT;
-//    public static String USER_SERVICE_HOST;
-//    public static int USER_SERVICE_PORT;
-//    public static String PRIMARY_HOST;
-//    public static int PRIMARY_PORT;
-//    public static String JOIN_MODE;
     private static  Membership membership = new Membership();
     final static Logger logger = Logger.getLogger(Driver.class);
 
 
     public static void main(String[] args) {
-        Properties config = loadConfig("config.properties");
-        membership.loadInitMembers(config);
-
-        Server jettyHttpServer = new Server(Membership.SELF_FRONT_END_PORT);
-        ServletHandler jettyHandler = new ServletHandler();
-        jettyHandler.addServletWithMapping(new ServletHolder(new UserServlet()), "/users/*");
-        jettyHandler.addServletWithMapping(new ServletHolder(new EventServlet()), "/events");
-        jettyHandler.addServletWithMapping(new ServletHolder(new EventServlet()), "/events/*");
-        jettyHandler.addServletWithMapping(new ServletHolder(new SystemServlet()), "/heartbeat");
-        jettyHandler.addServletWithMapping(new ServletHolder(new SystemServlet()), "/newprimary");
-        jettyHttpServer.setHandler(jettyHandler);
         try {
+            Properties config = loadConfig("config.properties");
+            //membership.loadInitMembers(config);
+            membership.loadSelfConfiguration(config);
+            Server jettyHttpServer = new Server(Membership.SELF_FRONT_END_PORT);
+            ServletHandler jettyHandler = new ServletHandler();
+            jettyHandler.addServletWithMapping(new ServletHolder(new UserServlet()), "/users/*");
+            jettyHandler.addServletWithMapping(new ServletHolder(new EventServlet()), "/events");
+            jettyHandler.addServletWithMapping(new ServletHolder(new EventServlet()), "/events/*");
+            jettyHandler.addServletWithMapping(new ServletHolder(new SystemServlet()), "/heartbeat");
+            jettyHandler.addServletWithMapping(new ServletHolder(new SystemServlet()), "/newprimary");
+            jettyHttpServer.setHandler(jettyHandler);
             jettyHttpServer.start();
+            membership.loadInitMembers(config);
         } catch (Exception e) {
             e.printStackTrace();
         }

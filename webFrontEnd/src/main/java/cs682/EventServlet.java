@@ -114,7 +114,7 @@ public class EventServlet extends HttpServlet {
             JSONObject jsonObj = (JSONObject) parser.parse(jsonRequest);
             int tickets = ((Long)jsonObj.get("tickets")).intValue();
             logger.debug("/purchase");
-            logger.debug("event: " +eventId+ " tickets: " + tickets);
+            logger.debug("event:" +eventId+ " tickets:" + tickets);
             JSONObject eventServiceJson = new JSONObject();
             eventServiceJson.put("userid", userId);
             eventServiceJson.put("eventid", eventId);

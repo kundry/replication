@@ -74,8 +74,6 @@ public class SendingReplicaWorker implements Runnable {
                     }
                 }
             }
-            // deregisterFromChannel();
-            //how to exit the while ? here or when I am notified of not being primary anymore
         }
     }
 

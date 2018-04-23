@@ -79,7 +79,7 @@ public class EventData {
     }
 
     public boolean isRegistered(int id) {
-      return eventsMap.containsKey(id);
+        return eventsMap.containsKey(id);
     }
 
     /**
@@ -217,7 +217,7 @@ public class EventData {
                 JSONObject obj = iterator.next();
                 Event event = new Event();
                 Event eventToAdd = event.fromJsonToEventObj(obj);
-                eventsMap.put(event.getId(), eventToAdd);
+                eventsMap.put(eventToAdd.getId(), eventToAdd);
             }
         }
     }
