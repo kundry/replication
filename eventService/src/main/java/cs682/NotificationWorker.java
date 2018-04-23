@@ -23,7 +23,7 @@ public class NotificationWorker implements Runnable {
 
     @Override
     public void run() {
-        logger.debug("Notifying to " + url);
+        //logger.debug("Notifying to " + url);
         try {
             URL urlObj = new URL(url);
             HttpURLConnection conn  = (HttpURLConnection) urlObj.openConnection();
@@ -35,13 +35,13 @@ public class NotificationWorker implements Runnable {
             int responseCode = conn.getResponseCode();
             switch (responseCode) {
                 case HttpServletResponse.SC_OK:
-                    logger.debug("The notification was successful:  " + url);
+                    //logger.debug("The notification was successful:  " + url);
                     break;
                 case HttpServletResponse.SC_BAD_REQUEST:
-                    logger.debug("The notification was successful:  " + url);
+                    //logger.debug("The notification was unsuccessful:  " + url);
                     break;
                 default:
-                    logger.debug("Status Code Received Unknown: " + url);
+                    //logger.debug("Status Code Received Unknown: " + url);
                     break;
             }
         } catch (IOException e) {

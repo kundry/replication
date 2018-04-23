@@ -1,6 +1,5 @@
 package cs682;
 
-import com.sun.source.tree.SynchronizedTree;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -20,7 +19,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Membership {
-    //private static final List<Member> members = Collections.synchronizedList(new ArrayList<Member>());
+
     private List<Member> members;
     private ReentrantLock lock;
     public static boolean PRIMARY;
@@ -71,15 +70,16 @@ public class Membership {
         SELF_JOIN_MODE = config.getProperty("eventservicejoining");
 
         if (SELF_JOIN_MODE.equalsIgnoreCase("on")) {
-            logger.debug("Joining ...");
+            logger.debug( SELF_EVENT_SERVICE_HOST + ":" + SELF_EVENT_SERVICE_PORT + " Joining ...");
             ArrayList<Member> membersFromPrimary = register();
             members.addAll(membersFromPrimary);
+            logger.debug("Members received");
             ID_COUNT = findMyId(membersFromPrimary);
-            printMemberList();
+            //printMemberList();
             JSONObject data = getDataFromPrimary();
-            System.out.println("data json" + data.toString());
             eventData.initEventData(data);
         } else {
+            logger.debug("Primary Started");
             Member primary = new Member(config.getProperty("primaryhost"), config.getProperty("primaryport"), "EVENT", true, 1);
             members.add(primary);
             //Member follower1 = new Member(config.getProperty("follower1host"), config.getProperty("follower1port"),"EVENT", false, 2);
@@ -100,36 +100,49 @@ public class Membership {
         }
     }
 
+    /**
+     * Registers the new server. It adds it to the member list and respond back
+     * with the list of the current members
+     * @param request http request
+     * @param response http request
+     * */
     public void registerServer(HttpServletRequest request, HttpServletResponse response){
+        lock.lock();
         try {
             String requestBody = getRequestBody(request);
             JSONParser parser = new JSONParser();
             JSONObject jsonObj = (JSONObject) parser.parse(requestBody);
-            logger.debug("New node configuration received: " +requestBody);
             String host = (String)jsonObj.get("host");
             int port = ((Long)jsonObj.get("port")).intValue();
             String type = (String)jsonObj.get("type");
+
+            logger.debug(System.lineSeparator() + "New " + host + ":" + port);
             int id = 0;
             if (type.equals("EVENT")){
-                //logger.debug("Process ID before: " + ID_COUNT);
                 ID_COUNT++;
                 id = ID_COUNT;
-                //logger.debug("Process ID generated: " + id);
             }
             Member member = new Member(host, String.valueOf(port), type,false, id);
             notifyOtherServers(member);
             members.add(member);
-            printMemberList();
+            updateChannel(member);
+            //printMemberList();
             sendMyListOfMembers(response);
+            if (member.getType().equals("EVENT"))logger.debug("Members sent");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException p) {
             p.printStackTrace();
+        } finally {
+            lock.unlock();
         }
     }
 
+    /**
+     * Notifies the servers that a new member was added
+     * @param newMember Member object
+     * */
     private void notifyOtherServers(Member newMember){
-        //logger.debug("Process of notifying other servers has started ...");
         synchronized (members) {
             for (Member server : members) {
                 if ((server.getType().equals("EVENT") && !server.getIsPrimary())) {
@@ -140,6 +153,10 @@ public class Membership {
         }
     }
 
+    /**
+     * Attaches and sends in the response the list of current server members
+     * @param response Http Response
+     * */
     private void sendMyListOfMembers(HttpServletResponse response){
         try {
             JSONObject membersList = createJSONOfMembers();
@@ -154,16 +171,21 @@ public class Membership {
         }
     }
 
+    /**
+     * Once a notification of new server added is received, it adds the node to the list
+     * of members
+     * @param request Http Request
+     * @param response Http Response
+     * */
     public void addNotifiedServer(HttpServletRequest request, HttpServletResponse response) {
         try {
             String requestBody = getRequestBody(request);
             JSONParser parser = new JSONParser();
             JSONObject jsonObj = (JSONObject) parser.parse(requestBody);
-            logger.debug("Primary has notified me (" + SELF_EVENT_SERVICE_HOST +":"+ SELF_EVENT_SERVICE_PORT + ") about a new server..." +requestBody);
             Member member = Member.fromJsonToMemberObj(jsonObj);
             members.add(member);
-            logger.debug("My list of members has changed ");
-            printMemberList();
+            logger.debug("Notified " + member.getHost()+":"+ member.getPort());
+            //printMemberList();
             response.setStatus(HttpServletResponse.SC_OK);
         } catch (IOException e){
             e.printStackTrace();
@@ -172,6 +194,10 @@ public class Membership {
         }
     }
 
+    /**
+     * Creates a json object of all the current members
+     * @return JSON Object of members
+     * */
     private JSONObject createJSONOfMembers(){
         JSONObject obj = new JSONObject();
         JSONArray array = new JSONArray();
@@ -193,6 +219,11 @@ public class Membership {
         return obj;
     }
 
+    /**
+     * Sends the petition of registering with the new primary and get the
+     * list of new members sent by him
+     * @return ArrayList of members
+     * */
     private ArrayList<Member> register() {
         ArrayList<Member> members = new ArrayList<>();
         try {
@@ -201,7 +232,6 @@ public class Membership {
             switch (responseCode) {
                 case HttpServletResponse.SC_OK:
                     String jsonResponse = getResponseBody(conn);
-                    logger.debug("Members received" );
                     members = parseMembers(jsonResponse);
                     break;
                 case HttpServletResponse.SC_BAD_REQUEST:
@@ -217,6 +247,11 @@ public class Membership {
         return members;
     }
 
+    /**
+     * Sends the request of registering with the new primary and returns the corresponding
+     * established connection
+     * @return HttpURLConnection
+     * */
     private HttpURLConnection registerWithPrimary() {
         String host = PRIMARY_HOST + ":" + String.valueOf(PRIMARY_PORT);
         String path = "/members/register";
@@ -238,6 +273,10 @@ public class Membership {
         }
     }
 
+    /**
+     * Creates a json object with the configuration of the running server
+     * @return JSONObject
+     * */
     private JSONObject createJsonWithOwnConfig() {
         JSONObject json = new JSONObject();
         json.put("host", SELF_EVENT_SERVICE_HOST);
@@ -245,7 +284,10 @@ public class Membership {
         json.put("type", "EVENT");
         return json;
     }
-
+    /**
+     * Sets post reuqest properties in a given HttpURLConnection
+     * @param conn HttpURLConnection
+     * */
     private void setPostRequestProperties(HttpURLConnection conn){
         try {
             conn.setDoInput(true);
@@ -277,6 +319,11 @@ public class Membership {
         return body;
     }
 
+    /**
+     * Converts a string with the format of a json into a list of members
+     * @param JsonOfMembersReceived string with json format
+     * @return Array list of members
+     * */
     private ArrayList<Member> parseMembers(String JsonOfMembersReceived) {
         ArrayList<Member> members = new ArrayList<>();
         try {
@@ -330,6 +377,10 @@ public class Membership {
         logger.debug(sb.toString());
     }
 
+    /**
+     * Method that generates a list of the current members in the architecture
+     * @return ArrayList of members
+     */
     public ArrayList<Member> getMembers(){
         synchronized (members) {
             ArrayList<Member> list = new ArrayList<>();
@@ -340,6 +391,12 @@ public class Membership {
         }
     }
 
+    /**
+     * Initializes the structure of the Channel build to communicate with the replicas and
+     * send the writes received by the front end server.
+     * The Channel contains a thread per secondary node that performs the sending of ordered
+     * write operations
+     */
     public void initSendingReplicaChannel() {
         synchronized (members) {
             for (Member m : members) {
@@ -352,6 +409,21 @@ public class Membership {
             }
         }
     }
+
+    public void updateChannel(Member m) {
+        if(m.getType().equals("EVENT") && !m.getIsPrimary()) {
+            String hostAndPort = "http://" + m.getHost() + ":" + m.getPort();
+            SendingReplicaWorker worker = new SendingReplicaWorker(hostAndPort);
+            EventServlet.registerInChannel(worker);
+            replicationThreadPool.submit(worker);
+        }
+    }
+
+    /**
+     * Retrieves a subset of the members that can be elected as primaries in the running
+     * election process. The candidates are selected based on its pid
+     * @return ArrayList of candidates
+     */
     private ArrayList<Member> getCandidates(){
         synchronized (members) {
             ArrayList<Member> candidates = new ArrayList<>();
@@ -365,6 +437,12 @@ public class Membership {
         }
     }
 
+    /**
+     * Method that runs the election process and handles the corresponding notifications and
+     * configuration updates. A bully algorithm was implemented that elects the server with
+     * lowest ID_COUNT among all the remaining active servers.
+     * This function is invoked by the secondaries that detects the failure of the primary.
+     */
      public synchronized void startElection() {
         IN_ELECTION = true;
         ArrayList<Member> candidates = getCandidates();
@@ -392,8 +470,12 @@ public class Membership {
         }
     }
 
-
-
+    /**
+     * Compares the given pid extracted from the request with the pid of the current server
+     * to determine if the current node is a candidate and requires to start an election
+     * @param pId int ID_COUNT of the server sending the message
+     * @param response Http response
+     */
     public void processElectionMessage(int pId, HttpServletResponse response) {
         if (pId > ID_COUNT) {
             response.setStatus(HttpServletResponse.SC_OK);
@@ -404,6 +486,13 @@ public class Membership {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
+
+    /**
+     * Updates the configuration parameters to switch from the failed primary to the one
+     * elected.
+     * @param newPrimaryHost Host of the new primary
+     * @param newPrimaryPort Port of the new primary
+     */
     public void updatePrimary (String newPrimaryHost , int newPrimaryPort){
         PRIMARY_HOST = "http://" + newPrimaryHost;
         PRIMARY_PORT = newPrimaryPort;
@@ -418,6 +507,11 @@ public class Membership {
         printMemberList();
     }
 
+    /**
+     * Removes a node that went down given its host and port
+     * @param host Host of the new primary
+     * @param port Port of the new primary
+     */
     public void removeServerDown(String host, String port) {
         synchronized (members) {
             Iterator<Member> iterator = members.iterator();
@@ -430,6 +524,10 @@ public class Membership {
         }
     }
 
+    /**
+     * Removes a node that was flagged as candidate from the list of members
+     * Used by the nodes as secondaries and primaries
+     */
     public void removePrimary() {
         synchronized (members) {
             Iterator<Member> iterator = members.iterator();
@@ -442,7 +540,11 @@ public class Membership {
         }
     }
 
-
+    /**
+     * Sends a GET request to the current primary to get its data and synchronized
+     * the current data structure with the one received
+     * @return JSONObject
+     */
     public JSONObject getDataFromPrimary(){
         String host = PRIMARY_HOST + ":" + String.valueOf(PRIMARY_PORT);
         String path = "/members/data";
@@ -473,6 +575,12 @@ public class Membership {
         return json;
     }
 
+    /**
+     * Finds the id of the running server in the given list.
+     * This is the list provided by the primary with the data of all the current servers members
+     * @param list
+     * @return id_count found
+     */
     private int findMyId(ArrayList<Member> list){
         int id = 0;
         for(Member m : list) {
@@ -483,10 +591,16 @@ public class Membership {
        return  id;
     }
 
+    /**
+     * Sends a notification with the host and port of the new primary that was elected
+     */
     public void notifyNewPrimary(){
         JSONObject json = new JSONObject();
         json.put("primaryhost", SELF_EVENT_SERVICE_HOST);
         json.put("primaryport", SELF_EVENT_SERVICE_PORT);
+        json.put("version", eventData.VERSION);
+        JSONArray data = eventData.createJsonEventsList();
+        json.put("data", data);
         synchronized (members) {
             for (Member m : members) {
                 if (!m.getIsPrimary()){
@@ -495,7 +609,6 @@ public class Membership {
                     NotificationWorker worker = new NotificationWorker(url, json.toString());
                     notificationThreadPool.submit(worker);
                 }
-
             }
         }
     }

@@ -1,5 +1,6 @@
 package cs682;
 
+import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -12,11 +13,11 @@ import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class EventServlet extends HttpServlet {
 
+public class EventServlet extends HttpServlet {
+    final static Logger logger = Logger.getLogger(EventServlet.class);
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response){
-        System.out.println("In /events/* doGet...");
         String pathInfo = request.getPathInfo();
         if (pathInfo != null) {
             if (pathInfo.matches("/[\\d]+")) {
@@ -31,17 +32,16 @@ public class EventServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("In /events/* doPost...");
         String pathInfo = request.getPathInfo();
-        System.out.println(pathInfo);
         if (pathInfo.equals("/create")) {
+            logger.debug(pathInfo);
             createEvent(request, response);
         } else {
             Pattern pattern = Pattern.compile("/([\\d]+)/purchase/([\\d]+)");
             Matcher match = pattern.matcher(pathInfo);
             if (match.find()) {
-                System.out.println(match.group(1));
-                System.out.println(match.group(2));
+                //System.out.println(match.group(1));
+                //System.out.println(match.group(2));
                 int eventId = Integer.parseInt(match.group(1));
                 int userId = Integer.parseInt(match.group(2));
                 purchaseTickets(eventId, userId, request, response);
@@ -113,6 +113,8 @@ public class EventServlet extends HttpServlet {
             JSONParser parser = new JSONParser();
             JSONObject jsonObj = (JSONObject) parser.parse(jsonRequest);
             int tickets = ((Long)jsonObj.get("tickets")).intValue();
+            logger.debug("/purchase");
+            logger.debug("event: " +eventId+ " tickets: " + tickets);
             JSONObject eventServiceJson = new JSONObject();
             eventServiceJson.put("userid", userId);
             eventServiceJson.put("eventid", eventId);
@@ -134,6 +136,7 @@ public class EventServlet extends HttpServlet {
                     String jsonResponse = getResponseBody(conn);
                     System.out.println(jsonResponse);
                     response.setStatus(HttpServletResponse.SC_OK);
+                    logger.debug("SC_OK");
                     break;
                 case HttpServletResponse.SC_BAD_REQUEST:
                     response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

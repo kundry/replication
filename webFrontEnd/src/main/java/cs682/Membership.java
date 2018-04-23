@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -54,10 +53,10 @@ public class Membership {
         SELF_JOIN_MODE = config.getProperty("frontendjoining");
 
         if (SELF_JOIN_MODE.equalsIgnoreCase("on")) {
-            logger.debug("New Web Front End Service Joining ... " + SELF_FRONT_END_HOST +":"+ SELF_FRONT_END_PORT );
+            logger.debug( SELF_FRONT_END_HOST+":"+SELF_FRONT_END_PORT + " Joining ... ");
             ArrayList<Member> membersFromPrimary = getMembersFromPrimary();
             members.addAll(membersFromPrimary);
-            printMemberList();
+            //printMemberList();
         } else {
             Member primary = new Member(config.getProperty("primaryhost"), config.getProperty("primaryport"), "EVENT", true, 1);
             members.add(primary);
@@ -76,7 +75,7 @@ public class Membership {
             switch (responseCode) {
                 case HttpServletResponse.SC_OK:
                     String jsonResponse = getResponseBody(conn);
-                    logger.debug("Members received from Primary: " + jsonResponse);
+                    //logger.debug("Members received from Primary: " + jsonResponse);
                     members = parseMembers(jsonResponse);
                     break;
                 case HttpServletResponse.SC_BAD_REQUEST:
@@ -151,6 +150,12 @@ public class Membership {
         return body;
     }
 
+
+    /**
+     * Converts a string with the format of a json into a list of members
+     * @param JsonOfMembersReceived string with json format
+     * @return Array list of members
+     * */
     private ArrayList<Member> parseMembers(String JsonOfMembersReceived) {
         ArrayList<Member> members = new ArrayList<>();
         try {
@@ -160,16 +165,60 @@ public class Membership {
             Iterator<JSONObject> iterator = arrayOfMembers.iterator();
             while (iterator.hasNext()) {
                 JSONObject obj = iterator.next();
-                boolean primary;
-                if (obj.get("isPrimary") == "true") primary = true;
-                else primary = false;
-                Member member = new Member((String)obj.get("host"), (String)obj.get("port"), (String)obj.get("type"),primary, ((Long)obj.get("pid")).intValue());
+                Member member = fromJsonToMemberObj(obj);
                 members.add(member);
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return members;
+    }
+
+    /**
+     * Converts the json representation of a member into a member object
+     * @param json json object that contains data of a member
+     * @return member object
+     */
+    public static Member fromJsonToMemberObj(JSONObject json){
+        boolean primary;
+        if (json.get("isPrimary").equals("true")) primary = true;
+        else primary = false;
+        Member member = new Member((String)json.get("host"), (String)json.get("port"), (String)json.get("type"),primary, ((Long)json.get("pid")).intValue());
+        return member;
+    }
+
+    /**
+     * Updates the configuration parameters to switch from the failed primary to the one
+     * elected.
+     * @param newPrimaryHost Host of the new primary
+     * @param newPrimaryPort Port of the new primary
+     */
+    public static void updatePrimary (String newPrimaryHost , int newPrimaryPort){
+        PRIMARY_HOST = "http://" + newPrimaryHost;
+        PRIMARY_PORT = newPrimaryPort;
+        synchronized (members) {
+            for (Member m : members) {
+                if (m.getType().equals("EVENT") && (m.getHost().equals(newPrimaryHost)) && (Integer.parseInt(m.getPort())==newPrimaryPort)) {
+                    m.setIsPrimary(true);
+                }
+            }
+        }
+    }
+
+    /**
+     * Removes a node that was flagged as candidate from the list of members
+     * Used by the nodes as secondaries and primaries
+     */
+    public static void removePrimary() {
+        synchronized (members) {
+            Iterator<Member> iterator = members.iterator();
+            while (iterator.hasNext()) {
+                Member m = iterator.next();
+                if (m.getIsPrimary()) {
+                    iterator.remove();
+                }
+            }
+        }
     }
 
     /**

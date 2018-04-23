@@ -42,8 +42,6 @@ public class ReceivingReplicaWorker implements Runnable {
                     }
                 }
             }
-            // deregisterFromChannel();
-            //how to exit the while ? here or when I am notified of not being primary anymore
         }
     }
     private void executeCreate(Write incomingWrite){
@@ -58,7 +56,8 @@ public class ReceivingReplicaWorker implements Runnable {
             int version = ((Long)jsonObj.get("versionid")).intValue();
             Event event = new Event(id, eventName, userId, numTickets);
             EventServlet.eventData.addEvent(event);
-            logger.debug("/create replicated: " + requestBody);
+            logger.debug(System.lineSeparator() + "/create replicated: ");
+            logger.debug(event.toString());
             EventData.VERSION = version;
         } catch (ParseException e) {
             e.printStackTrace();

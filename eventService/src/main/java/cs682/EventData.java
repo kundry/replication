@@ -123,9 +123,9 @@ public class EventData {
             jsonObj.put("userid", e.getUserId());
             jsonObj.put("avail", e.getAvail());
             jsonObj.put("purchased", e.getPurchased());
+            jsonObj.put("numtickets", e.getNumTickets());
             jsonArray.add(jsonObj);
         }
-        System.out.println(jsonArray.toString());
         return jsonArray;
     }
     /**
@@ -212,6 +212,7 @@ public class EventData {
         JSONArray jsonArray = (JSONArray) json.get("data");
         Iterator<JSONObject> iterator = jsonArray.iterator();
         synchronized (eventsMap) {
+            if (!eventsMap.isEmpty()) eventsMap.clear();
             while (iterator.hasNext()) {
                 JSONObject obj = iterator.next();
                 Event event = new Event();

@@ -31,10 +31,11 @@ public class Driver {
         jettyHandler.addServletWithMapping(new ServletHolder(new UserServlet()), "/users/*");
         jettyHandler.addServletWithMapping(new ServletHolder(new EventServlet()), "/events");
         jettyHandler.addServletWithMapping(new ServletHolder(new EventServlet()), "/events/*");
+        jettyHandler.addServletWithMapping(new ServletHolder(new SystemServlet()), "/heartbeat");
+        jettyHandler.addServletWithMapping(new ServletHolder(new SystemServlet()), "/newprimary");
         jettyHttpServer.setHandler(jettyHandler);
         try {
             jettyHttpServer.start();
-            logger.debug("Web Front End Service Starting ...   " + "PORT: " + Membership.SELF_FRONT_END_PORT);
         } catch (Exception e) {
             e.printStackTrace();
         }

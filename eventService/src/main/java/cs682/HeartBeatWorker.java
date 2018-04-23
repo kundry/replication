@@ -13,10 +13,6 @@ public class HeartBeatWorker implements Runnable {
     protected static final Membership membership = Membership.getInstance();
     final static Logger logger = Logger.getLogger(NotificationWorker.class);
 
-//    public HeartBeatWorker(String url, boolean isPrimary){
-//        this.url = url;
-//        this.isPrimary = isPrimary;
-//    }
     public HeartBeatWorker(Member m){
         this.member = m;
         this.url = "http://" + m.getHost() + ":" + m.getPort() + "/heartbeat";
@@ -24,7 +20,7 @@ public class HeartBeatWorker implements Runnable {
 
     @Override
     public void run() {
-        logger.debug("Sending HeartBeat to " + url);
+        //logger.debug("Sending HeartBeat to " + url);
         try {
             URL urlObj = new URL(url);
             HttpURLConnection conn  = (HttpURLConnection) urlObj.openConnection();
@@ -33,21 +29,24 @@ public class HeartBeatWorker implements Runnable {
             int responseCode = conn.getResponseCode();
             switch (responseCode) {
                 case HttpServletResponse.SC_OK:
-                    logger.debug("Server Alive:  " + url);
+                    //logger.debug("Server Alive:  " + url);
                     break;
                 default:
-                    logger.debug("Server not alive. Status unknown: " + url);
+                    //logger.debug("Server not alive. Status unknown: " + url);
                     break;
             }
         } catch (IOException e) {
-            logger.debug("Server Unreachable. HeartBeat has failed: " + url);
+            //logger.debug("Server Unreachable. HeartBeat has failed: " + url);
             if (member.getIsPrimary()) {
-
-                logger.debug("Primary Down");
+                logger.debug("PRIMARY Down");
                 membership.startElection();
-                //Membership.removeServerDown(member.getHost(), member.getPort());
             } else {
+                logger.debug(member.getType() + " SERVER Down" );
                 membership.removeServerDown(member.getHost(), member.getPort());
+                logger.debug("Membership table updated" );
+                if(member.getType().equals("EVENT")){
+                   //membership.deregisterFromChannel(member.getPId());
+                }
             }
         }
     }

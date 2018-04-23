@@ -53,3 +53,76 @@
 [ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
 
 2018-04-13 20:06:02 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-22 09:50:10 DEBUG Membership:56 - Joining ... localhost:8080
+2018-04-22 09:50:10 DEBUG Membership:78 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"}]}
+
+2018-04-22 09:50:10 DEBUG Membership:185 - Members List:
+[ localhost:8081, Type: EVENT, Primary: false, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-22 09:50:11 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-22 09:57:09 DEBUG Membership:56 - Joining ... localhost:8080
+2018-04-22 09:57:09 DEBUG Membership:78 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"}]}
+
+2018-04-22 09:57:09 DEBUG Membership:221 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-22 09:57:09 DEBUG Driver:37 - Web Front End Service Starting ...   PORT: 8080
+2018-04-22 10:05:40 DEBUG Membership:56 - Joining ... localhost:8080
+2018-04-22 10:05:40 DEBUG Membership:78 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"}]}
+
+2018-04-22 10:05:40 DEBUG Membership:221 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-22 10:05:41 DEBUG Driver:38 - Web Front End Service Starting ...   PORT: 8080
+2018-04-22 10:05:41 DEBUG Driver:13 - doGet front end
+2018-04-22 10:05:47 DEBUG Driver:13 - doGet front end
+2018-04-22 10:05:56 DEBUG Driver:13 - doGet front end
+2018-04-22 10:06:02 DEBUG Driver:13 - doGet front end
+2018-04-22 10:06:11 DEBUG Driver:13 - doGet front end
+2018-04-22 10:06:17 DEBUG Driver:13 - doGet front end
+2018-04-22 10:06:26 DEBUG Driver:13 - doGet front end
+2018-04-22 10:06:32 DEBUG Driver:13 - doGet front end
+2018-04-22 10:06:47 DEBUG Driver:13 - doGet front end
+2018-04-22 10:07:02 DEBUG Driver:13 - doGet front end
+2018-04-22 10:07:17 DEBUG Driver:13 - doGet front end
+2018-04-22 10:07:32 DEBUG Driver:13 - doGet front end
+2018-04-22 10:07:47 DEBUG Driver:13 - doGet front end
+2018-04-22 10:12:31 DEBUG Membership:56 - Joining ... localhost:8080
+2018-04-22 10:12:31 DEBUG Membership:78 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"}]}
+
+2018-04-22 10:12:31 DEBUG Membership:221 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-22 10:12:32 DEBUG Driver:38 - Web Front End Service Starting ...   PORT: 8080
+2018-04-22 10:12:38 DEBUG Driver:13 - doGet front end
+2018-04-22 10:12:43 DEBUG Driver:13 - doGet front end
+2018-04-22 10:12:44 DEBUG Driver:13 - doGet front end
+2018-04-22 10:12:53 DEBUG Driver:13 - doGet front end
+2018-04-22 10:12:58 DEBUG Driver:13 - doGet front end
+2018-04-22 10:12:59 DEBUG Driver:13 - doGet front end
+2018-04-22 10:13:08 DEBUG Driver:13 - doGet front end
+2018-04-22 10:13:13 DEBUG Driver:13 - doGet front end
+2018-04-22 10:13:14 DEBUG Driver:13 - doGet front end
+2018-04-22 10:13:23 DEBUG Driver:13 - doGet front end
+2018-04-22 10:13:28 DEBUG Driver:13 - doGet front end
+2018-04-22 10:13:29 DEBUG Driver:13 - doGet front end
+2018-04-22 11:45:18 DEBUG Membership:56 - Joining ... localhost:8080
+2018-04-22 11:45:19 DEBUG Membership:78 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"}]}
+
+2018-04-22 11:45:19 DEBUG Membership:221 - Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+2018-04-22 11:45:19 DEBUG Driver:38 - Web Front End Service Starting ...   PORT: 8080

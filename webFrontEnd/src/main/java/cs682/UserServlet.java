@@ -21,7 +21,6 @@ public class UserServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("In /users/* doPost...");
         String pathInfo = request.getPathInfo();
         System.out.println(pathInfo);
 
@@ -43,7 +42,6 @@ public class UserServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("In /users/id doGet...");
         String host = Membership.USER_SERVICE_HOST + ":" + String.valueOf(Membership.USER_SERVICE_PORT);
         String path = request.getPathInfo();
         String url = host + path;
@@ -67,7 +65,6 @@ public class UserServlet extends HttpServlet {
                     out.write(updatedJson.toString());
                     out.flush();
                     out.close();
-                    System.out.println(updatedJson.toString()); //erase
                     break;
                 case HttpServletResponse.SC_BAD_REQUEST:
                     response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

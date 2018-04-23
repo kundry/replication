@@ -825,3 +825,1010 @@ Sending HeartBeat to http://localhost:8082/heartbeat
 Sending HeartBeat to http://localhost:8083/heartbeat
 Server Alive:  http://localhost:8082/heartbeat
 Server Alive:  http://localhost:8083/heartbeat
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8082/heartbeat
+New Member requesting data
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+New Member requesting data
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8083/heartbeat
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+Notifying to http://localhost:8082/members/add
+The notification was successful:  http://localhost:8082/members/add
+New Member requesting data
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Event Service Started
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+Notifying to http://localhost:8082/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+The notification was successful:  http://localhost:8082/members/add
+New Member requesting data
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+Notifying to http://localhost:8082/members/add
+New Member requesting data
+The notification was successful:  http://localhost:8082/members/add
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+Notifying to http://localhost:8082/members/add
+New Member requesting data
+The notification was successful:  http://localhost:8082/members/add
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+Notifying to http://localhost:8082/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+Notifying to http://localhost:8083/members/add
+The notification was successful:  http://localhost:8082/members/add
+The notification was successful:  http://localhost:8083/members/add
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server not alive. Status unknown: http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+Notifying to http://localhost:8082/members/add
+New Member requesting data
+The notification was successful:  http://localhost:8082/members/add
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+Notifying to http://localhost:8082/members/add
+Notifying to http://localhost:8083/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+The notification was successful:  http://localhost:8083/members/add
+The notification was successful:  http://localhost:8082/members/add
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server not alive. Status unknown: http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8082/heartbeat
+Server not alive. Status unknown: http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8083/heartbeat
+Server not alive. Status unknown: http://localhost:8080/heartbeat
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+Notifying to http://localhost:8082/members/add
+New Member requesting data
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8083/heartbeat
+The notification was successful:  http://localhost:8082/members/add
+Server Alive:  http://localhost:8082/heartbeat
+New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+Notifying to http://localhost:8082/members/add
+The notification was successful:  http://localhost:8082/members/add
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+Notifying to http://localhost:8082/members/add
+The notification was successful:  http://localhost:8082/members/add
+New Member requesting data
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+Notifying to http://localhost:8082/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+Notifying to http://localhost:8083/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+The notification was successful:  http://localhost:8082/members/add
+The notification was successful:  http://localhost:8083/members/add
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Event Service Started
+Event Service Started
+New node configuration received: {"port":8085,"host":"localhost","type":"FRONT_END"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8085, Type: FRONT_END, Primary: false, PID:  0]
+
+Sending HeartBeat to http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+Notifying to http://localhost:8082/members/add
+The notification was successful:  http://localhost:8082/members/add
+New Member requesting data
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+Notifying to http://localhost:8082/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+Notifying to http://localhost:8083/members/add
+The notification was successful:  http://localhost:8082/members/add
+The notification was successful:  http://localhost:8083/members/add
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+New node configuration received: {"port":8085,"host":"localhost","type":"FRONT_END"}
+
+Notifying to http://localhost:8082/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8085, Type: FRONT_END, Primary: false, PID:  0]
+
+Notifying to http://localhost:8083/members/add
+The notification was successful:  http://localhost:8082/members/add
+The notification was successful:  http://localhost:8083/members/add
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+/create
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication has started
+Replication has finished!
+Responding {"eventid":1}
+
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8080/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Server Alive:  http://localhost:8085/heartbeat
+Server Alive:  http://localhost:8082/heartbeat
+Server Alive:  http://localhost:8083/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+Sending HeartBeat to http://localhost:8083/heartbeat
+Sending HeartBeat to http://localhost:8082/heartbeat
+Sending HeartBeat to http://localhost:8085/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8082/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8085/heartbeat
+Server Unreachable. HeartBeat has failed: http://localhost:8083/heartbeat
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+Notifying to http://localhost:8082/members/add
+The notification was successful:  http://localhost:8082/members/add
+/create
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication has started
+Replication has finished!
+Responding {"eventid":1}
+
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+Notifying to http://localhost:8082/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+The notification was successful:  http://localhost:8082/members/add
+/create
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication has started
+Replication has finished!
+Responding {"eventid":1}
+
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+Notifying to http://localhost:8082/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+The notification was successful:  http://localhost:8082/members/add
+New Member requesting data
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+Notifying to http://localhost:8082/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+The notification was successful:  http://localhost:8082/members/add
+/create
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication has started
+Replication has finished!
+Responding {"eventid":1}
+
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+Notifying to http://localhost:8082/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+The notification was successful:  http://localhost:8082/members/add
+New Member requesting data
+Event Service Started
+New node configuration received: {"port":8082,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+New Member requesting data
+New node configuration received: {"port":8080,"host":"localhost","type":"FRONT_END"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+
+Notifying to http://localhost:8082/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+The notification was successful:  http://localhost:8082/members/add
+/create
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 10
+Sold = 0
+
+Replication has started
+Replication has finished!
+Responding {"eventid":1}
+
+New node configuration received: {"port":8083,"host":"localhost","type":"EVENT"}
+
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+
+Notifying to http://localhost:8082/members/add
+Members List:
+[ localhost:8081, Type: EVENT, Primary: true, PID:  1]
+[ localhost:8082, Type: EVENT, Primary: false, PID:  2]
+[ localhost:8080, Type: FRONT_END, Primary: false, PID:  0]
+[ localhost:8083, Type: EVENT, Primary: false, PID:  3]
+
+The notification was successful:  http://localhost:8082/members/add
+New Member requesting data
+/create
+Writing locally
+2 - RUN
+Total tickets = 20
+Available = 20
+Sold = 0
+
+Replication has started
+Replication has finished!
+Responding {"eventid":2}
+
+Write received: /purchase/1
+{"eventid":1,"tickets":3,"userid":2723}
+
+Writing locally
+1 - Party
+Total tickets = 10
+Available = 7
+Sold = 3
+
+Replication has started
+Replication has finished!
+Responding: SC_OK
+Event Service Started
+New server localhost8082
+New Member requesting data
+New server localhost8083
+Notifying to http://localhost:8082/members/add
+New Member requesting data
+The notification was successful:  http://localhost:8082/members/add
+New server localhost8080
+Notifying to http://localhost:8082/members/add
+The notification was successful:  http://localhost:8082/members/add
+Event Service Started

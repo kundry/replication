@@ -16,7 +16,7 @@ import java.util.Queue;
 public class SendingReplicaWorker implements Runnable {
     boolean beingPrimary;
     private String hostAndPort;
-    private Queue<Write> writesQueue; // it should be threadsafe
+    private Queue<Write> writesQueue;
     final static Logger logger = Logger.getLogger(SendingReplicaWorker.class);
 
     /** Constructor of the class that initialize the  parameters needed to establish the

@@ -22,7 +22,6 @@ public class EventServlet extends HttpServlet {
     protected static final Membership membership = Membership.getInstance();
     private static final ArrayList<SendingReplicaWorker> sendingReplicaChannel = new ArrayList();
     public static final ReceivingReplicaWorker receiverWorker = new ReceivingReplicaWorker();
-    //private Membership membership = new Membership();
     final static Logger logger = Logger.getLogger(EventServlet.class);
     /**
      * Handles the POST Requests of creating new events and
@@ -37,7 +36,7 @@ public class EventServlet extends HttpServlet {
             if (Membership.PRIMARY){
                 synchronized (this) {
                     String requestBody = getRequestBody(request);
-                    logger.debug(pathInfo);
+                    logger.debug(System.lineSeparator() + pathInfo);
                     Event event = createEvent(requestBody);
                     if (event != null) {
                         EventData.VERSION++;
@@ -59,22 +58,21 @@ public class EventServlet extends HttpServlet {
         } else if (pathInfo.equals("/members/add")) {
             membership.addNotifiedServer(request, response);
         } else if (pathInfo.matches("/newprimary")) {
-            logger.debug("New Primary has been elected");
+            logger.debug("New Primary elected");
             processNewPrimary(request, response);
         } else {
             if (pathInfo.matches("/purchase/([\\d]+)")) {
                 if (Membership.PRIMARY) {
                     synchronized (this) {
                         String requestBody = getRequestBody(request);
-                        logger.debug("Write received: " + pathInfo);
-                        logger.debug(requestBody);
+                        logger.debug(System.lineSeparator() + pathInfo);
                         boolean success = purchaseTicket(requestBody);
                         if (success){
                             EventData.VERSION++;
                             int vId = EventData.VERSION;
                             boolean replicationSuccess = replicateWrite(requestBody, pathInfo, vId);
                             if (replicationSuccess) {
-                                logger.debug("Responding: SC_OK");
+                                //logger.debug("Responding: SC_OK");
                                 response.setStatus(HttpServletResponse.SC_OK);
                             }
                         } else {
@@ -106,11 +104,11 @@ public class EventServlet extends HttpServlet {
             replyAlive(response);
         } else if (pathInfo.matches("/election/([\\d]+)")) {
             int senderPid = Integer.parseInt(pathInfo.substring(10));
-            logger.debug("Election Message received from " + senderPid);
+            logger.debug("Election Message from " + senderPid);
             membership.processElectionMessage(senderPid, response);
         } else if (pathInfo.matches("/members/data")) {
-            logger.debug("New Member requesting data");
             sendDataToNewMember(response);
+            logger.debug("Data sent");
         } else {
             showOneEvent(request, response);
         }
@@ -149,7 +147,7 @@ public class EventServlet extends HttpServlet {
         try {
             JSONObject json = createJsonResponseNewEvent(event.getId());
             String jsonResponse = json.toString();
-            logger.debug("Responding "+ jsonResponse + System.lineSeparator());
+            //logger.debug("Responding "+ jsonResponse + System.lineSeparator());
             response.setStatus(HttpServletResponse.SC_OK);
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter out = response.getWriter();
@@ -296,22 +294,24 @@ public class EventServlet extends HttpServlet {
         sendingReplicaChannel.add(worker);
     }
 
+    public static void deregisterInChannel(int pid){
+
+        //sendingReplicaChannel.add(worker);
+    }
+
     private boolean replicateWrite(String jsonBody, String pathInfo, int vId) {
         boolean okInAll = false;
         try {
             Write write = new Write(pathInfo, jsonBody, vId);
-            logger.debug("Replication has started");
+            logger.debug("Replication started");
             final CountDownLatch latch = new CountDownLatch(sendingReplicaChannel.size());
             write.setLatch(latch);
-            //logger.debug("latch set " + latch );
             for (SendingReplicaWorker follower : sendingReplicaChannel) {
                 follower.queueWrite(write);
             }
-            //logger.debug("latch before await " + latch );
             latch.await();
-            //logger.debug("latch after await " + latch );
             okInAll = true;
-            logger.debug("Replication has finished!");
+            logger.debug("Replication finished");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -329,13 +329,16 @@ public class EventServlet extends HttpServlet {
             JSONObject json = (JSONObject) parser.parse(requestBody);
             String primaryHost = (String) json.get("primaryhost");
             int primaryPort = ((Long)json.get("primaryport")).intValue();
+            int version = ((Long)json.get("version")).intValue();
             membership.removePrimary();
             membership.updatePrimary(primaryHost, primaryPort);
+            eventData.initEventData(json);
+            logger.debug("Data Updated to version "+ version);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
     }
+
     private void sendDataToNewMember(HttpServletResponse response) {
         try {
             JSONObject responseJson = new JSONObject();

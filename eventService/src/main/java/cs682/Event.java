@@ -147,10 +147,10 @@ public class Event {
 
     public Event fromJsonToEventObj(JSONObject json)  {
         Event event = new Event();
-        event.id = ((Long)json.get("id")).intValue();
+        event.id = ((Long)json.get("eventid")).intValue();
         event.name = (String)json.get("name");
         event.userId = ((Long)json.get("userid")).intValue();
-        event.numTickets = ((Long)json.get("numtickets")).intValue();;
+        event.numTickets = ((Long)json.get("numtickets")).intValue();
         event.avail = ((Long)json.get("avail")).intValue();
         event.purchased = ((Long)json.get("purchased")).intValue();
         return event;
