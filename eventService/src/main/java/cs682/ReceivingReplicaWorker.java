@@ -8,6 +8,9 @@ import org.json.simple.parser.ParseException;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/** Class that receives the writes and queue them for then execute them in order and
+ *  and store the chances in the data structure.
+ */
 public class ReceivingReplicaWorker implements Runnable {
     boolean beingFollower = true;
     private Queue<Write> writesQueue = new LinkedList<>();
@@ -44,6 +47,11 @@ public class ReceivingReplicaWorker implements Runnable {
             }
         }
     }
+
+    /** Method that applies the write operation received
+     * over the data structure (Create Event Operation)
+     *  @param incomingWrite received by the remote host
+     */
     private void executeCreate(Write incomingWrite){
         try {
             String requestBody = incomingWrite.getJsonBody();
@@ -63,6 +71,11 @@ public class ReceivingReplicaWorker implements Runnable {
             e.printStackTrace();
         }
     }
+
+    /** Method that applies the write operation received
+     * over the data structure (Purchase Operation)
+     *  @param incomingWrite received by the remote host
+     */
     private void executePurchase(Write incomingWrite){
         try {
             String requestBody = incomingWrite.getJsonBody();

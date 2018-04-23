@@ -30,11 +30,6 @@ public class Membership {
     public static String SELF_JOIN_MODE;
     final static Logger logger = Logger.getLogger(Membership.class);
 
-
-    public void add(Member member){
-        members.add(member);
-    }
-
     /**
      * It parses the properties file with configuration information
      * and load the host and port of the node launched
@@ -51,8 +46,6 @@ public class Membership {
      * @param config property object to parse
      * */
     public void loadInitMembers(Properties config) {
-//        SELF_FRONT_END_PORT = Integer.parseInt(config.getProperty("selffrontendport"));
-//        SELF_FRONT_END_HOST = config.getProperty("selffrontendhost");
 
         USER_SERVICE_HOST = "http://" + config.getProperty("userhost");
         USER_SERVICE_PORT = Integer.parseInt(config.getProperty("userport"));
@@ -66,7 +59,6 @@ public class Membership {
             logger.debug( SELF_FRONT_END_HOST+":"+SELF_FRONT_END_PORT + " Joining ... ");
             ArrayList<Member> membersFromPrimary = getMembersFromPrimary();
             members.addAll(membersFromPrimary);
-            //printMemberList();
         } else {
             Member primary = new Member(config.getProperty("primaryhost"), config.getProperty("primaryport"), "EVENT", true, 1);
             members.add(primary);
@@ -77,6 +69,10 @@ public class Membership {
         }
     }
 
+    /**
+     * It sends a request that ask the primary for its list members
+     * @return  ArrayList  List of members
+     * */
     private ArrayList<Member> getMembersFromPrimary(){
         ArrayList<Member> members = new ArrayList<>();
         try {
@@ -85,7 +81,6 @@ public class Membership {
             switch (responseCode) {
                 case HttpServletResponse.SC_OK:
                     String jsonResponse = getResponseBody(conn);
-                    //logger.debug("Members received from Primary: " + jsonResponse);
                     members = parseMembers(jsonResponse);
                     break;
                 case HttpServletResponse.SC_BAD_REQUEST:
@@ -100,7 +95,10 @@ public class Membership {
         }
         return members;
     }
-
+    /**
+     * It send the request that registers the new member with the primary
+     * @return  registerWithPrimary  HttpURLConnection
+     * */
     private  HttpURLConnection registerWithPrimary() {
         String host = PRIMARY_HOST + ":" + String.valueOf(PRIMARY_PORT);
         String path = "/members/register";
@@ -122,6 +120,10 @@ public class Membership {
         }
     }
 
+    /**
+     * Generates a json with the configuration of the current node
+     * @return  JSONObject  jason Object
+     * */
     private JSONObject createJsonWithOwnConfig() {
         JSONObject json = new JSONObject();
         json.put("host", SELF_FRONT_END_HOST);
@@ -129,6 +131,11 @@ public class Membership {
         json.put("type", "FRONT_END");
         return json;
     }
+
+    /**
+     * Sets Post Request properties
+     * @param conn HttpURLConnection
+     * */
     private void setPostRequestProperties(HttpURLConnection conn){
         try {
             conn.setDoInput(true);
@@ -233,7 +240,7 @@ public class Membership {
 
     /**
      * Method that prints on the console the content
-     * of the data structure of members
+     * of the data structure of members (for debugging purposes)
      */
     public void printMemberList() {
         StringBuilder sb = new StringBuilder();
@@ -243,6 +250,14 @@ public class Membership {
             sb.append(m);
         }
         logger.debug(sb.toString());
+    }
+
+    /**
+     * Method that adds a member to the
+     *  data structure of members
+     */
+    public void add(Member member){
+        members.add(member);
     }
 
 }

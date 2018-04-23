@@ -6,13 +6,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+/**
+ * Runnable that sends a heartbeat to the given node
+ * */
 public class HeartBeatWorker implements Runnable {
     private String url;
     private Member member;
     protected static final Membership membership = Membership.getInstance();
     final static Logger logger = Logger.getLogger(NotificationWorker.class);
 
+    /**
+     * Constructor
+     * @param m Member to send the heartbeat
+     * */
     public HeartBeatWorker(Member m){
         this.member = m;
         this.url = "http://" + m.getHost() + ":" + m.getPort() + "/heartbeat";
@@ -20,7 +26,6 @@ public class HeartBeatWorker implements Runnable {
 
     @Override
     public void run() {
-        //logger.debug("Sending HeartBeat to " + url);
         try {
             URL urlObj = new URL(url);
             HttpURLConnection conn  = (HttpURLConnection) urlObj.openConnection();
@@ -29,14 +34,11 @@ public class HeartBeatWorker implements Runnable {
             int responseCode = conn.getResponseCode();
             switch (responseCode) {
                 case HttpServletResponse.SC_OK:
-                    //logger.debug("Server Alive:  " + url);
                     break;
                 default:
-                    //logger.debug("Server not alive. Status unknown: " + url);
                     break;
             }
         } catch (IOException e) {
-            //logger.debug("Server Unreachable. HeartBeat has failed: " + url);
             if (member.getIsPrimary()) {
                 logger.debug("PRIMARY Down");
                 membership.startElection();

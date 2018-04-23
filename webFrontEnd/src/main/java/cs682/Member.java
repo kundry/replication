@@ -1,5 +1,9 @@
 package cs682;
 
+/**
+ * Class that holds the information of a member of the architecture
+ * all the configuration information needed
+ */
 public class Member {
     private String host;
     private String port;
@@ -7,6 +11,14 @@ public class Member {
     private boolean isPrimary;
     private int pId;
 
+    /**
+     * Constructor
+     * @param host host
+     * @param port port
+     * @param type type
+     * @param isPrimary true or false if primary
+     * @param pId
+     */
     public Member( String host, String port, String type, boolean isPrimary, int pId){
         this.host = host;
         this.port = port;
@@ -15,6 +27,9 @@ public class Member {
         this.pId = pId;
     }
 
+    /**
+     * Getters
+     */
     public String getHost(){
         return this.host;
     }
@@ -31,6 +46,9 @@ public class Member {
         return this.pId;
     }
 
+    /**
+     * Setters
+     */
     public void setHost(String host){
         this.host = host;
     }

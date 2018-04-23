@@ -12,8 +12,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Servlet that handles the requests related with the heartbeat and
+ * the notifications received about new primaries elected
+ * */
 public class SystemServlet extends HttpServlet {
     final static Logger logger = Logger.getLogger(SystemServlet.class);
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response){
         String pathInfo = request.getPathInfo();
@@ -44,6 +49,7 @@ public class SystemServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+
     /**
      * Gets the jason of the body of the request and converted into string
      * @param request http request

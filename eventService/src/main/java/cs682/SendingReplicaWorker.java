@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/** Class that performs the replication. It receives the writes and queue them
+ * to be sent to be sent to the secondaries
+ */
 public class SendingReplicaWorker implements Runnable {
     boolean beingPrimary;
     private String hostAndPort;
@@ -22,7 +25,6 @@ public class SendingReplicaWorker implements Runnable {
     /** Constructor of the class that initialize the  parameters needed to establish the
      *  communication with the corresponding follower
      *  @param hostAndPort host and port to replicate
-
      */
     public SendingReplicaWorker(String hostAndPort) {
         this.hostAndPort = hostAndPort;
@@ -77,13 +79,9 @@ public class SendingReplicaWorker implements Runnable {
         }
     }
 
-    /** Method that sets false the flag that keeps the thread waiting for
-     * incoming writes to be propagated to the corresponding follower
-     */
-    public void stop(){
-        beingPrimary = false;
-    }
-
+    /** Method that sets the properties of a post request
+     * @param conn HttpURLConnection
+     **/
     private void setPostRequestProperties(HttpURLConnection conn){
         try {
             conn.setDoInput(true);

@@ -119,7 +119,6 @@ public class EventServlet extends HttpServlet {
      * object created
      * @param requestBody http request
      * */
-
     private Event createEvent(String requestBody) {
         Event event = null;
         try {
@@ -142,6 +141,12 @@ public class EventServlet extends HttpServlet {
         return event;
     }
 
+    /**
+     * Creates the response for the event created and send it to the
+     * corresponding client server
+     * @param response http response
+     * @param event event object
+     * */
     private void respondCreate(HttpServletResponse response, Event event) {
         try {
             JSONObject json = createJsonResponseNewEvent(event.getId());
@@ -288,14 +293,31 @@ public class EventServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
+    /**
+     * Registers workers in the Channel of replication of data
+     * @param pid server id
+     * @param worker  thread that sends the data to be replicated
+     * */
     public static void registerInChannel(Integer pid, SendingReplicaWorker worker){
         sendingReplicaChannel.put(pid,worker);
     }
 
+    /**
+     * Unregisters workers in the Channel of replication of data
+     * @param pid server id
+     * */
     public static void deregisterFromChannel(int pid){
         sendingReplicaChannel.remove(pid);
     }
 
+    /**
+     * Replicates a write to all the followers and waits for all the replies to
+     * send back the response to the client
+     * @param jsonBody string with json like format to be sent
+     * @param pathInfo path of the request
+     * @param vId data structure version
+     * @return true or false
+     * */
     private boolean replicateWrite(String jsonBody, String pathInfo, int vId) {
         boolean okInAll = false;
         try {
@@ -314,11 +336,24 @@ public class EventServlet extends HttpServlet {
         }
         return okInAll;
     }
+
+    /**
+     * Applies the write received to de data structure
+     * @param request Http Request
+     * @param pathInfo request path
+     * */
     private void applyWrite(HttpServletRequest request, String pathInfo){
         String jsonBody = getRequestBody(request);
         Write write = new Write(pathInfo, jsonBody);
         receiverWorker.queueWrite(write);
     }
+
+    /**
+     * Process the Data of the new primary and updates all the parameters of
+     * configuration and update the membership information
+     * @param request Http Request
+     * @param response Http Response
+     * */
     private void processNewPrimary(HttpServletRequest request, HttpServletResponse response){
         try {
             String requestBody = getRequestBody(request);
@@ -337,6 +372,10 @@ public class EventServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Sends all the data contains in the data structure to the new member
+     * @param response Http Response
+     * */
     private void sendDataToNewMember(HttpServletResponse response) {
         try {
             JSONObject responseJson = new JSONObject();
@@ -352,6 +391,5 @@ public class EventServlet extends HttpServlet {
         } catch (IOException e){
             e.printStackTrace();
         }
-
     }
 }

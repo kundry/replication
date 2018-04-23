@@ -8,12 +8,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * Class that handles the process of sending election messages
+ * and the replies of the candidates
+ */
 public class ElectionWorker implements Runnable {
     private String url;
     private final CountDownLatch latch;
     protected static final Membership membership = Membership.getInstance();
     final static Logger logger = Logger.getLogger(ElectionWorker.class);
 
+    /**
+     * Constructor
+     * @param url url for the message to be sent
+     * @param latch countdown latch object
+     */
     ElectionWorker(String url, CountDownLatch latch){
         this.url = url;
         this.latch = latch;

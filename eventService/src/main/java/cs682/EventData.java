@@ -2,8 +2,6 @@ package cs682;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
@@ -55,7 +53,6 @@ public class EventData {
      * events of the EventService
      * @param newEvent new event to be created
      */
-
      public void addEvent(Event newEvent) {
         eventsMap.put(newEvent.getId(), newEvent);
      }
@@ -78,6 +75,11 @@ public class EventData {
         return eventsList;
     }
 
+    /**
+     * Method that indicates if the given event is register in the data structure
+     * @param id
+     * @return  true or false
+     */
     public boolean isRegistered(int id) {
         return eventsMap.containsKey(id);
     }
@@ -207,6 +209,11 @@ public class EventData {
         }
     }
 
+    /**
+     * Method that initialize the data structure with the list of events stored in the
+     * given json object
+     * @param json Json object
+     */
     public void initEventData(JSONObject  json) {
         VERSION = ((Long)json.get("version")).intValue();
         JSONArray jsonArray = (JSONArray) json.get("data");

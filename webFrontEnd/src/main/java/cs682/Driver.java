@@ -11,15 +11,11 @@ import org.apache.log4j.Logger;
  * Class that starts the JettyServer
  */
 public class Driver {
-
     private static  Membership membership = new Membership();
-    final static Logger logger = Logger.getLogger(Driver.class);
-
 
     public static void main(String[] args) {
         try {
             Properties config = loadConfig("config.properties");
-            //membership.loadInitMembers(config);
             membership.loadSelfConfiguration(config);
             Server jettyHttpServer = new Server(Membership.SELF_FRONT_END_PORT);
             ServletHandler jettyHandler = new ServletHandler();

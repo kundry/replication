@@ -16,7 +16,9 @@ import java.net.URL;
 import java.util.ArrayList;
 
 
-
+/**
+ * Servlet that serves the requests that go against the User Service
+ */
 public class UserServlet extends HttpServlet {
 
     @Override

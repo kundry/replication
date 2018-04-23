@@ -52,9 +52,6 @@ public class Membership {
         return singleton;
     }
 
-
-
-
     public void loadSelfConfiguration(Properties config){
         SELF_EVENT_SERVICE_PORT = Integer.parseInt(config.getProperty("selfeventport"));
         SELF_EVENT_SERVICE_HOST = config.getProperty("selfeventhost");
@@ -65,8 +62,6 @@ public class Membership {
      * @param config property object to parse
      * */
     public void loadInitMembers(Properties config) {
-        //SELF_EVENT_SERVICE_PORT = Integer.parseInt(config.getProperty("selfeventport"));
-        //SELF_EVENT_SERVICE_HOST = config.getProperty("selfeventhost");
         USER_SERVICE_HOST = "http://" + config.getProperty("userhost");
         USER_SERVICE_PORT = Integer.parseInt(config.getProperty("userport"));
         PRIMARY_HOST = "http://" + config.getProperty("primaryhost");
@@ -82,20 +77,12 @@ public class Membership {
             members.addAll(membersFromPrimary);
             logger.debug("Members received");
             ID_COUNT = findMyId(membersFromPrimary);
-            //printMemberList();
             JSONObject data = getDataFromPrimary();
-            //logger.debug("data from primary " + data.toString());
             eventData.initEventData(data);
         } else {
             logger.debug("Primary Started");
             Member primary = new Member(config.getProperty("primaryhost"), config.getProperty("primaryport"), "EVENT", true, 1);
             members.add(primary);
-            //Member follower1 = new Member(config.getProperty("follower1host"), config.getProperty("follower1port"),"EVENT", false, 2);
-            //members.add(follower1);
-            //Member follower2 = new Member(config.getProperty("follower2host"), config.getProperty("follower2port"),"EVENT", false, 3);
-            //members.add(follower2);
-            //Member webFrontEnd = new Member(config.getProperty("frontendhost"), config.getProperty("frontendport"),"FRONT_END", false, 0);
-            //members.add(webFrontEnd);
             ID_COUNT = 1;
         }
 
@@ -133,7 +120,6 @@ public class Membership {
             notifyOtherServers(member);
             members.add(member);
             updateChannel(member);
-            //printMemberList();
             sendMyListOfMembers(response);
             if (member.getType().equals("EVENT"))logger.debug("Members sent");
         } catch (IOException e) {
@@ -192,7 +178,6 @@ public class Membership {
             Member member = Member.fromJsonToMemberObj(jsonObj);
             members.add(member);
             logger.debug("Notified " + member.getHost()+":"+ member.getPort());
-            //printMemberList();
             response.setStatus(HttpServletResponse.SC_OK);
         } catch (IOException e){
             e.printStackTrace();
@@ -417,6 +402,11 @@ public class Membership {
         }
     }
 
+    /**
+     * It updates the Channel of sending replication information adding the
+     * given member
+     * @param m Member object
+     */
     public void updateChannel(Member m) {
         if(m.getType().equals("EVENT") && !m.getIsPrimary()) {
             String hostAndPort = "http://" + m.getHost() + ":" + m.getPort();
@@ -467,7 +457,6 @@ public class Membership {
                 PRIMARY = true;
                 removePrimary();
                 updatePrimary(SELF_EVENT_SERVICE_HOST, SELF_EVENT_SERVICE_PORT);
-                //printMemberList();
                 notifyNewPrimary();
                 initSendingReplicaChannel();
             }
@@ -509,8 +498,6 @@ public class Membership {
                 }
             }
         }
-//        logger.debug("List with new primary");
-//        printMemberList();
     }
 
     /**

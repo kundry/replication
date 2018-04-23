@@ -9,24 +9,19 @@ import java.util.Iterator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/** Timer Task that is in charge of sending the heartbeats at certain time
+ * intervals previously configured
+ **/
 public class HeartBeatTimeTask extends TimerTask {
-    //private ArrayList<Member> memberList;
     protected static final Membership membership = Membership.getInstance();
     final static Logger logger = Logger.getLogger(NotificationWorker.class);
     private static ExecutorService heartbeatThreadPool = Executors.newFixedThreadPool(6);
 
-//    HeartBeatTimeTask(ArrayList<Member> memberList){
-//        this.memberList = memberList;
-//    }
-
     @Override
     public void run() {
-        //System.out.println("Task performed on " + new Date());
         ArrayList<Member> memberList = membership.getMembers();
         for (Member member : memberList){
             if(!(member.getHost().equals(Membership.SELF_EVENT_SERVICE_HOST) && member.getPort().equals(String.valueOf(Membership.SELF_EVENT_SERVICE_PORT)))){
-                //String url = "http://" + member.getHost() + ":" + member.getPort() + "/heartbeat";
-                //heartbeatThreadPool.submit(new HeartBeatWorker(url, member.getIsPrimary()));
                 heartbeatThreadPool.submit(new HeartBeatWorker(member));
             }
         }

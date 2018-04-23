@@ -14,14 +14,12 @@ import org.apache.log4j.Logger;
 public class Driver {
 
     protected static final Membership membership = Membership.getInstance();
-    final static Logger logger = Logger.getLogger(Driver.class);
 
     public static void main(String[] args) {
         try {
 
             Properties config = loadConfig("config.properties");
             membership.loadSelfConfiguration(config);
-            //membership.loadInitMembers(config);
             Server jettyHttpServer = new Server(Membership.SELF_EVENT_SERVICE_PORT);
             ServletHandler jettyHandler = new ServletHandler();
             jettyHandler.addServletWithMapping(new ServletHolder(new EventServlet()), "/*");

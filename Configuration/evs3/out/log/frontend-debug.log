@@ -1,0 +1,139 @@
+2018-04-15 09:39:04 DEBUG Membership:60 - New Event Service Joining ... localhost:8083
+2018-04-15 09:39:04 DEBUG Membership:174 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 09:46:42 DEBUG Membership:60 - New Event Service Joining ... localhost:8083
+2018-04-15 09:46:42 DEBUG Membership:174 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 09:54:49 DEBUG Membership:60 - New Event Service Joining ... localhost:8083
+2018-04-15 09:54:49 DEBUG Membership:174 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 09:58:53 DEBUG Membership:60 - New Event Service Joining ... localhost:8083
+2018-04-15 09:58:53 DEBUG Membership:174 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 10:03:38 DEBUG Membership:60 - New Event Service Joining ... localhost:8083
+2018-04-15 10:03:38 DEBUG Membership:174 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 10:08:09 DEBUG Membership:60 - New Event Service Joining ... localhost:8083
+2018-04-15 10:08:09 DEBUG Membership:174 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 10:15:31 DEBUG Membership:60 - New Event Service Joining ... localhost:8083
+2018-04-15 10:15:31 DEBUG Membership:174 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 10:22:06 DEBUG Membership:60 - New Event Service Joining ... localhost:8083
+2018-04-15 10:22:06 DEBUG Membership:174 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 10:26:26 DEBUG Membership:60 - New Event Service Joining ... localhost:8083
+2018-04-15 10:26:26 DEBUG Membership:174 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 12:12:03 DEBUG Membership:60 - New Event Service Joining ... localhost:8083
+2018-04-15 12:12:04 DEBUG Membership:174 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 12:16:19 DEBUG Membership:60 - New Event Service Joining ... localhost:8083
+2018-04-15 12:16:20 DEBUG Membership:174 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 12:28:54 DEBUG Membership:59 - New Event Service Joining ... localhost:8083
+2018-04-15 12:28:54 DEBUG Membership:175 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 12:29:05 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 12:29:05 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 12:29:05 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8081/heartbeat
+2018-04-15 12:29:05 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 12:29:05 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat
+2018-04-15 12:29:05 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8081/heartbeat
+2018-04-15 13:17:30 DEBUG Membership:58 - New Event Service Joining ... localhost:8083
+2018-04-15 13:17:30 DEBUG Membership:178 - Members received from Primary: {"members":[{"port":"8081","isPrimary":"true","host":"localhost","pid":1,"type":"EVENT"},{"port":"8082","isPrimary":"false","host":"localhost","pid":2,"type":"EVENT"},{"port":"8083","isPrimary":"false","host":"localhost","pid":3,"type":"EVENT"},{"port":"8080","isPrimary":"false","host":"localhost","pid":0,"type":"FRONT_END"},{"port":"8083","isPrimary":"false","host":"localhost","pid":4,"type":"EVENT"}]}
+
+2018-04-15 13:17:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8081/heartbeat
+2018-04-15 13:17:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 13:17:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 13:17:41 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8081/heartbeat
+2018-04-15 13:17:41 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 13:17:41 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat
+2018-04-15 13:19:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8081/heartbeat
+2018-04-15 13:19:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 13:19:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 13:19:41 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 13:19:41 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat
+2018-04-15 13:19:41 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8081/heartbeat
+2018-04-15 13:21:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8081/heartbeat
+2018-04-15 13:21:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 13:21:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 13:21:41 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 13:21:41 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8081/heartbeat
+2018-04-15 13:21:41 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat
+2018-04-15 13:23:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8081/heartbeat
+2018-04-15 13:23:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 13:23:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 13:23:41 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 13:23:41 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8081/heartbeat
+2018-04-15 13:23:41 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat
+2018-04-15 13:25:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8081/heartbeat
+2018-04-15 13:25:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8080/heartbeat
+2018-04-15 13:25:41 DEBUG NotificationWorker:20 - Sending HeartBeat http://localhost:8082/heartbeat
+2018-04-15 13:25:41 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8081/heartbeat
+2018-04-15 13:25:41 DEBUG NotificationWorker:36 - Server Unreachable. HeartBeat has failed: http://localhost:8080/heartbeat
+2018-04-15 13:25:41 DEBUG NotificationWorker:29 - Server Alive:  http://localhost:8082/heartbeat
+2018-04-18 15:17:22 DEBUG EventServlet:57 - Write received: /create
+Event Service Starting at localhost on port: 8083
+Event Service Starting at localhost on port: 8083
+
+Write /create replicated: {"versionid":1,"numtickets":10,"userid":2305,"eventname":"party"}
+
+Event Service Starting at localhost on port: 8083
+
+Write /create replicated: {"versionid":1,"numtickets":10,"userid":2305,"eventname":"party"}
+
+Event Service Starting at localhost on port: 8083
+
+Write /create replicated: {"versionid":1,"numtickets":10,"userid":2305,"eventname":"party"}
+
+Event Service Starting at localhost on port: 8083
+
+Write /create replicated: {"versionid":1,"numtickets":10,"userid":2305,"eventname":"party"}
+
+Event Service Starting at localhost on port: 8083
+
+Write /create replicated: {"versionid":1,"numtickets":10,"userid":2305,"eventname":"party"}
+
+Event Service Starting at localhost on port: 8083
+
+Write /create replicated: {"versionid":1,"numtickets":10,"userid":2305,"eventname":"party"}
+
+Event Service Starting at localhost on port: 8083
+
+/create replicated: {"versionid":1,"numtickets":10,"userid":2305,"eventname":"party"}
+
+/purchase/1 replicated: {"eventid":1,"versionid":2,"tickets":2,"userid":2305}
+
+1 - party
+Total tickets = 10
+Available = 8
+Sold = 2
+
+Event Service Starting at localhost on port: 8083
+
+/create replicated: {"versionid":1,"numtickets":10,"userid":2305,"eventname":"party"}
+
+/create replicated: {"versionid":2,"numtickets":20,"userid":2318,"eventname":"10K Run"}
+
+/purchase/1 replicated: {"eventid":1,"versionid":3,"tickets":5,"userid":2305}
+
+1 - party
+Total tickets = 10
+Available = 5
+Sold = 5
+
+/purchase/2 replicated: {"eventid":1,"versionid":4,"tickets":1,"userid":2305}
+
+1 - party
+Total tickets = 10
+Available = 4
+Sold = 6
+
+/purchase/2 replicated: {"eventid":2,"versionid":5,"tickets":1,"userid":2305}
+
+2 - 10K Run
+Total tickets = 20
+Available = 19
+Sold = 1
+
